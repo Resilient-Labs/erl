@@ -1,0 +1,48 @@
+body {
+  width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: grey;
+  border-style: ridge;
+  border-width: 2px;
+  border-color: grey;
+  border-radius: 5px;
+}
+
+div {
+  border: solid 1px;
+  margin: 5px;
+}
+
+p {
+  font-weight: bold;
+  color: white;
+  margin: 0 auto;
+}
+
+#page {
+  border-style: none none dashed none;
+  border-width: 1px;
+  border-color: grey;
+  padding: 75px;
+}
+
+h1 {
+  font-weight: normal;
+  color: rgb(75,75,75);
+  margin: 15px;
+}
+
+h2 {
+  font-weight: normal;
+  color: rgb(100,100,100);
+  margin: 15px;
+}
