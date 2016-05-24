@@ -17,9 +17,10 @@ body {
   border-radius: 5px;
 }
 
-div {
-  border: solid 1px;
-  margin: 5px;
+form input {
+  margin: 0 auto;
+  text-align: center;
+  float: left;
 }
 
 p {
