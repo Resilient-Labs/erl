@@ -22,13 +22,13 @@ button {
   width: 150px;
 }
 
+<<<<<<< HEAD
 .dottedLine {
   height: 80px;
   width: 1px;
   border-style: dashed none none none;
   border-width: 1px;
   border-color: grey;
-
 }
 
 .infoBox {
