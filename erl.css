@@ -1,5 +1,5 @@
 body {
-  width: 1000px;
+  width: 900px;
   margin: 0 auto;
   text-align: center;
   font-family: Helvetica;
@@ -11,16 +11,15 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: grey;
-  border-style:;
+  border-style: ridge;
   border-width: 2px;
   border-color: grey;
   border-radius: 5px;
 }
 
-div {
-  border-color: grey;
-  border-style: solid;
-  border-width: 2px;
+form input {
+  margin: 0 auto;
+  text-align: center;
 }
 
 p {
@@ -38,21 +37,12 @@ p {
 
 h1 {
   font-weight: normal;
-  font-size: 250%;
-  color: rgb(100,100,100);
-  margin-bottom: 100px;
+  color: rgb(75,75,75);
+  margin: 15px;
 }
 
 h2 {
   font-weight: normal;
-  font-size: 125%;
   color: rgb(100,100,100);
-  margin-bottom: 75px;
-}
-
-.infoBox {
-  height: 50px;
-  width: 500px;
-  margin: 20px auto;
-  font-size: 75%;
+  margin: 15px;
 }
