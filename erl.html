@@ -4,7 +4,7 @@
   <title> 'ERL Home Page'</title>
   <link rel="stylesheet" type="text/css" href="erl.css">
   <!-- <script type="text/javascript" src="http://www.google.com/jsapi"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
 
 </head>
 
@@ -18,11 +18,10 @@
         </h2>
   <form id="form">
 
-    <input name="name" type="text" placeholder="Name" />
-    <input name="email" type="text" placeholder="Email" />
-    <input name="companyName" type="text" placeholder="Company Name" />
-    <input type="button" name="continue" class="button" value="Continue" />
-
+    <input class="infoBox" name="name" type="text" placeholder="Name" />
+    <input class="infoBox" name="email" type="text" placeholder="Email" />
+    <input class="infoBox" name="companyName" type="text" placeholder="Company Name" />
+    <button type="button"> Continue </button>
     </form>
   
   </section>
@@ -33,12 +32,8 @@
     <h2>
         Let's talk about your site. <br> Would you consider this project a website or a web app?
       </h2>
-    <div class='button'>
-      <p> WEBSITE </p>
-    </div>
-    <div class='button'>
-      <p> WEB APP </p>
-    </div>
+    <button type="button"> WEBSITE </button>
+    <button type="button"> WEB APP </button>
     <a> What's the diffence? </a>
   </section>
   <!--     PAGE TWO / TRANSISION -->
@@ -75,9 +70,7 @@
     <div>
       <!--       Empty box the client enters 'anything else that we should know' about their website -->
     </div>
-    <div class='button'>
-      <p> CONTINUE </p>
-    </div>
+    <button type="button"> CONTINUE </button>
   </section>
   <!--     PAGE THREE -->
   
@@ -137,12 +130,10 @@
     <h2>
           Will you be editing you site atleast once a week? <br> Does your site have a blog?
         </h2>
-    <div class='button'>
-      <p> Yes, Wordpress </p>
-    </div>
-    <div class='button'>
-      <p> No, Thank You </p>
-    </div>
+    <button type="button"> Yes, Wordpress </button>
+    <div class="dottedLine"></div>
+    <button type="button"> No, Thank You </button>
+
   </section>
   <!--     PAGE SEVEN -->
 
@@ -150,13 +141,12 @@
     <h1>
           Putting your quote together now!
         </h1>
-    <div class='button'>
-      <p> See Quote </p>
-    </div>
+    <button type="button"> See Quote </button>
+
   </section>
   <!--     PAGE EIGHT -->
 
-  <script src="erl.js"></script>
+  <!-- <script src="erl.js"></script> -->
 
 </body>
 

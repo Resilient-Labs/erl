@@ -5,7 +5,7 @@ body {
   font-family: Helvetica;
 }
 
-.button {
+button {
   display: inline-block;
   padding: 10px;
   margin-top: 10px;
@@ -15,17 +15,33 @@ body {
   border-width: 2px;
   border-color: grey;
   border-radius: 5px;
-}
-
-form input {
-  margin: 0 auto;
-  text-align: center;
-}
-
-p {
-  font-weight: bold;
+  font-weight: initial;
+  font-size: 17px;
   color: white;
-  margin: 0 auto;
+  height: 60px;
+  width: 150px;
+}
+
+.dottedLine {
+  height: 80px;
+  width: 1px;
+  border-style: dashed none none none;
+  border-width: 1px;
+  border-color: grey;
+
+}
+
+.infoBox {
+
+}
+
+input {
+  display: block;
+  margin: 30px auto;
+  text-align: center;
+  height: 60px;
+  width: 300px;
+
 }
 
 #page {
@@ -36,13 +52,15 @@ p {
 }
 
 h1 {
-  font-weight: normal;
+  font-weight: initial;
+  font-size: 2em;
   color: rgb(75,75,75);
-  margin: 15px;
+  margin-bottom: 75px;
 }
 
 h2 {
-  font-weight: normal;
+  font-weight: initial;
+  font-size: 1em;
   color: rgb(100,100,100);
-  margin: 15px;
+  margin-bottom: 75px;
 }
