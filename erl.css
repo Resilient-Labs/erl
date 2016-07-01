@@ -6,7 +6,7 @@ body {
 
 section {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #dcd;
   display: flex;
   align-items: center;
@@ -21,15 +21,61 @@ button {
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: grey;
-  border-style: ridge;
-  border-width: 2px;
-  border-color: grey;
+  border: 2px ridge grey;
   border-radius: 5px;
   font-weight: initial;
   font-size: 17px;
   color: white;
   height: 60px;
   width: 150px;
+}
+
+
+h1 {
+  font-weight: initial;
+  font-size: 2em;
+  color: rgb(75,75,75);
+  width: 100%;
+}
+
+h2 {
+  font-weight: initial;
+  font-size: 1em;
+  color: rgb(100,100,100);
+  width: 100%;
+}
+
+section div {
+  width: 50%;
+}
+
+#section3 div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-flow: row wrap;
+}
+
+#section3 div > button, #section3 div a {
+  width: 32%;
+  height: 150px;
+}
+#section3 div > button {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #D7D7D7;
+  border-radius: 0;
+  font-size: 1.5em;
+  font-family: Helvetica, Roboto, sans-serif;
+}
+#section3 div > button:hover {
+  cursor: pointer;
+}
+#section3 textarea {
+  width: 100%;
+  height: 150px;
+  padding: 20px;
 }
 
 .container {
@@ -40,13 +86,8 @@ button {
 .dottedLine {
   height: 80px;
   width: 1px;
-  border-style: dashed none none none;
-  border-width: 1px;
-  border-color: grey;
-}
-
-.infoBox {
-
+  border: 1px none grey;
+  border-top-style: dashed;
 }
 
 input {
@@ -56,21 +97,4 @@ input {
   height: 60px;
   width: 300px;
 
-}
-
-.page {
-  border: 1px dashed grey;
-  padding: 75px;
-}
-
-h1 {
-  font-weight: initial;
-  font-size: 2em;
-  color: rgb(75,75,75);
-}
-
-h2 {
-  font-weight: initial;
-  font-size: 1em;
-  color: rgb(100,100,100);
 }

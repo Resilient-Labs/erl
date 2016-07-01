@@ -16,7 +16,7 @@
         <input id="clientName" class="infoBox" name="Client Name: " type="text" placeholder="Name" />
         <input id="clientEmail" class="infoBox" name="email" type="text" placeholder="Email" />
         <input id="clientCompany" class="infoBox" name="companyName" type="text" placeholder="Company Name" />
-        <a href="#section2" onclick="clientInfo()"> <button type="button" id="continue1"> Continue </button> </a>
+        <a href="#section2" onclick="clientInfo()"> <button type="submit" id="continue1"> Continue </button> </a>
     </div>
 </section>
 
@@ -27,15 +27,45 @@
         <button id="isWebApp" type="button" onclick="isWebSite()" value="Website"> WEBSITE </button>
         <button id="isWebSite" type="button" onclick="isWebApp()" value="Webapp"> WEB APP </button>
         <!--<a> What's the difference? </a>-->
-        <a href="#section3" > <button type="button" id="continue2"> Continue </button> </a>
+        <a href="#section3" > <button type="submit" id="continue2"> Continue </button> </a>
     </div>
 </section>
 
-<form id="section3" action="MAILTO:muigai@resilientcoders.org" method="post"
-      enctype="text/plain">
-    <input id="formToSend" type="hidden">
-    <input type="submit" value="Send" onclick="submitEmail()">
-</form>
+<section id="section3">
+    <div>
+        <h1> We love websites ! </h1>
+        <h2>What are users supposed to learn form the site?</h2>
+        <button type="button">Users should learn more about my company/organization</button>
+        <button type="button">I want users to know events that we have</button>
+        <button type="button">I want users to able to login on to my site</button>
+        <!--     Second copy -->
+        <button type="button">Users should learn more about my company/organization</button>
+        <button type="button">I want users to know events that we have</button>
+        <button type="button">I want users to able to login on to my site</button>
+
+        <h2>Anything else we should know?</h2>
+        <textarea placeholder="Anything else"></textarea>
+        <!--<a> What's the difference? </a>-->
+        <a href="#section4" > <button type="submit" id="continue3"> Continue </button> </a>
+    </div>
+</section>
+
+<section id="section4">
+    <div>
+        <h1>How big is this project?</h1>
+        <h2></h2>
+    </div>
+</section>
+
+<section>
+    <div>
+        <form id="section5" action="MAILTO:muigai@resilientcoders.org" method="post"
+              enctype="text/plain">
+            <input id="formToSend" type="hidden">
+            <input type="submit" value="Send" onclick="submitEmail()">
+        </form>
+    </div>
+</section>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script>
