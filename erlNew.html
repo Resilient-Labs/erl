@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERL Site</title>
+    <link rel="stylesheet" type="text/css" href="erl.css">
+    <script src="erl.js"></script>
+</head>
+<body>
+
+<section id="section1">
+    <div>
+        <h1> Thanks For Your Interest In Resilient Labs!</h1>
+        <h2> We have a few questions for you before we can give you a quote.
+            <br> The first one is easy, tell us about yourself: </h2>
+        <input id="clientName" class="infoBox" name="Client Name: " type="text" placeholder="Name" />
+        <input id="clientEmail" class="infoBox" name="email" type="text" placeholder="Email" />
+        <input id="clientCompany" class="infoBox" name="companyName" type="text" placeholder="Company Name" />
+        <a href="#section2" onclick="clientInfo()"> <button type="button" id="continue1"> Continue </button> </a>
+    </div>
+</section>
+
+<section id="section2">
+    <div>
+        <h1> Thanks, [Inserted Name] </h1>
+        <h2>Let's talk about your site. <br> Would you consider this project a website or a web app?</h2>
+        <button id="isWebApp" type="button" onclick="isWebSite()" value="Website"> WEBSITE </button>
+        <button id="isWebSite" type="button" onclick="isWebApp()" value="Webapp"> WEB APP </button>
+        <!--<a> What's the difference? </a>-->
+        <a href="#section3" > <button type="button" id="continue2"> Continue </button> </a>
+    </div>
+</section>
+
+<form id="section3" action="MAILTO:muigai@resilientcoders.org" method="post"
+      enctype="text/plain">
+    <input id="formToSend" type="hidden">
+    <input type="submit" value="Send" onclick="submitEmail()">
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+
+</script>
+
+</body>
+</html>
