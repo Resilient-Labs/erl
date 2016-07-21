@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ERL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>Express Resilient Lab</title>
+
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body ng-controller="AppCtrl as ctrl">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
+<form name="form" class="css-form" novalidate>
+    {{client}}
+    <!-- FORM ENTRY #1 -->
+    <section>
+        <h2>Thanks for your interest in Resilient Lab</h2>
+        <p>We have a few questions for you before we can give you a quote. The first one is easy, tell us about
+            yourself: </p>
+        <input ng-model="client.name" type="text" placeholder="name" required>
+        <input ng-model="client.email" type="email" placeholder="email" required>
+        <input ng-model="client.company" type="text" placeholder="company name">
+        <input type="button" ng-click="" value="Continue" />
+    </section>
+    <!-- FORM ENTRY #2 -->
+    <section>
+        <h2>Thanks, {{client.name}}</h2>
+        <p>Let's talk about your site. Would you consider this project to be a website or a web app?</p>
+        <input type="button" ng-click="" value="Website" />
+        <input type="button" ng-click="" value="Web App" />
+        <i>What's the difference?</i>
+    </section>
+    <!-- FORM ENTRY #3 -->
+    <section>
+        <h2>We love websites!</h2>
+        <p>What are users supposed to learn from the site?</p>
+
+        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
+        <input type="button" ng-click="" value="I want users to know about events that we have" />
+        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
+        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
+        <input type="button" ng-click="" value="I want users to know about events that we have" />
+        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
+        <p>Anything else we should know?</p>
+        <textarea ></textarea>
+        <input type="button" ng-click="" value="Continue" />
+    </section>
+    <!-- FORM ENTRY #4 -->
+    <section>
+        <h2>How big is this project?</h2>
+        <p>How many pages will the site have, and what are they?</p>
+        Add new textarea with a special class area
+        <input type="button" ng-click="" value="Continue" />
+    </section>
+    <!-- FORM ENTRY #5 -->
+    <section>
+        <h2>Let's talk design</h2>
+        <p>For each page, choose a template that you think fits your content. Let's start with the homepage - pick a
+            homepage template</p>
+        Add new templates area with a special class area
+        <h2>Interior pages need love, too!</h2>
+        <p>The interior pages are all of the pages of your site that aren't the homepage. Check out our templates for
+            blogs, event calendars, contact forms, and general static pages.</p>
+
+        <h2>Template for - About</h2>
+    </section>
+    <!-- FORM ENTRY #6 -->
+    <section>
+        <h2>Last question, do you need Wordpress?</h2>
+        <p>How often do you need to edit your site? </p>
+
+        <p>Will you be editing your site at least once a week?</p>
+        <p>Does your site have a blog?</p>
+        <input type="button" ng-click="" value="Yes, Wordpress" />
+        <input type="button" ng-click="" value="No, Thank You" />
+    </section>
+    <!-- FORM ENTRY #7 -->
+    <section>
+        <h2>Putting your quote together now!</h2>
+        <input type="submit" ng-click="" value="See Quote" />
+    </section>
+</form>
+
+</body>
+</html>

@@ -25,7 +25,8 @@ function clientInfo() {
         client.email = document.getElementById("clientEmail").value;
         client.companyName = document.getElementById("clientCompany").value;
     } else {
-        alert("Please fill out all of the boxes!")
+        alert("Please fill out all of the boxes!");
+        
     }
     // Append string for Client Information
     var clientInfo = "The client's Name: " + client.name + "\n";
