@@ -9,30 +9,44 @@
 </head>
 <body ng-controller="AppCtrl as ctrl">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
+
+<div ng-class="isEnlarged ? 'imageContainer' : 'hide'">
+    <div ng-bind-html="viewedImage">
+    </div>
+    <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'">DELETE</button>
+</div>
+<!--
+<div class="difference">
+    <p>The difference between a website and a web app is quite simple if you ask me.
+        I could elaborate on this subject more but I am opting not to.
+    </p>
+</div>-->
+
 <form name="form" class="css-form" novalidate>
-    {{client}}
     <!-- FORM ENTRY #1 -->
-    <section>
+    <section id="first">
         <h2>Thanks for your interest in Resilient Lab</h2>
         <p>We have a few questions for you before we can give you a quote. The first one is easy, tell us about
             yourself: </p>
         <input ng-model="client.name" type="text" placeholder="name" required>
         <input ng-model="client.email" type="email" placeholder="email" required>
         <input ng-model="client.company" type="text" placeholder="company name">
-        <input type="button" ng-click="" value="Continue" />
+        <a class="continueBtn" href="#second">Continue</a>
     </section>
     <!-- FORM ENTRY #2 -->
-    <section>
+    <section id="second">
         <h2>Thanks, {{client.name}}</h2>
         <p>Let's talk about your site. Would you consider this project to be a website or a web app?</p>
-        <input type="button" ng-click="" value="Website" />
-        <input type="button" ng-click="" value="Web App" />
-        <i>What's the difference?</i>
+        <input type="button" class="website" ng-click="projectType()" value="Website" />
+        <input type="button" class="webapp" ng-click="projectType()" value="Web App" />
+        <i ng-click="showMore()" >What's the difference?</i>
+        <a class="continueBtn" href="#third">Continue</a>
     </section>
     <!-- FORM ENTRY #3 -->
-    <section>
+    <section id="third">
         <h2>We love websites!</h2>
         <p>What are users supposed to learn from the site?</p>
 
@@ -44,29 +58,55 @@
         <input type="button" ng-click="" value="Users should learn more about my company/organization" />
         <p>Anything else we should know?</p>
         <textarea ></textarea>
-        <input type="button" ng-click="" value="Continue" />
+        <a class="continueBtn" href="#fourth">Continue</a>
     </section>
     <!-- FORM ENTRY #4 -->
-    <section>
+    <section id="fourth">
         <h2>How big is this project?</h2>
         <p>How many pages will the site have, and what are they?</p>
-        Add new textarea with a special class area
-        <input type="button" ng-click="" value="Continue" />
+        <li ng-repeat="page in pages">
+            <div class="addPage">
+                <p>{{page.id}}</p>
+                <input type="text" value="{{page.name}}" readonly/>
+            </div>
+        </li>
+        <div class="addPage">
+            <button ng-click="addPage()">+</button>
+            <input type="text" ng-model="pagename"/>
+        </div>
+        <a class="continueBtn" href="#fifth">Continue</a>
     </section>
     <!-- FORM ENTRY #5 -->
-    <section>
+    <section id="fifth">
         <h2>Let's talk design</h2>
         <p>For each page, choose a template that you think fits your content. Let's start with the homepage - pick a
             homepage template</p>
-        Add new templates area with a special class area
+        <div class="templates">
+            <div class="template" ng-repeat="temps in homeTemplates">
+                <div>
+                    <img ng-click="viewThumbnail()" ng-src={{temps}}>
+                </div>
+                <input type="button" value="Select" />
+            </div>
+        </div>
+
         <h2>Interior pages need love, too!</h2>
         <p>The interior pages are all of the pages of your site that aren't the homepage. Check out our templates for
             blogs, event calendars, contact forms, and general static pages.</p>
 
         <h2>Template for - About</h2>
+        <div class="templates">
+            <div class="template" ng-repeat="temps in aboutTemplates">
+                <div>
+                    <img ng-click="viewThumbnail()" ng-src={{temps}}>
+                </div>
+                <input type="button" value="Select" />
+            </div>
+        </div>
+        <a class="continueBtn" href="#sixth">Continue</a>
     </section>
     <!-- FORM ENTRY #6 -->
-    <section>
+    <section id="sixth">
         <h2>Last question, do you need Wordpress?</h2>
         <p>How often do you need to edit your site? </p>
 
@@ -74,11 +114,14 @@
         <p>Does your site have a blog?</p>
         <input type="button" ng-click="" value="Yes, Wordpress" />
         <input type="button" ng-click="" value="No, Thank You" />
+        <a class="continueBtn" href="#seventh">Continue</a>
     </section>
     <!-- FORM ENTRY #7 -->
-    <section>
+    <section id="seventh">
         <h2>Putting your quote together now!</h2>
-        <input type="submit" ng-click="" value="See Quote" />
+        <input type="submit" ng-click="sendEmail()" value="See Quote" />
+
+        <a class="continueBtn" href="#first">Continue</a>
     </section>
 </form>
 

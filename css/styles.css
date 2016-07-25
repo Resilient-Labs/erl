@@ -3,6 +3,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-flow: column;
+    margin: 0;
+    overflow-x: hidden;
 }
 
 section {
@@ -10,15 +12,11 @@ section {
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    min-height: 50vh;
-    min-width: 50vw;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: #eee;
 }
-section:nth-child(odd) {
-    background-color: red;
-}
-section:nth-child(even) {
-    background-color: purple;
-}
+
 h2 {
     font-size: 24px;
     font-family: Roboto;
@@ -32,6 +30,10 @@ p {
 i {
     font-size: 16px;
     font-family: "Roboto Slab";
+}
+
+li {
+    list-style: none
 }
 
 input[type="text"], input[type="email"] {
@@ -65,4 +67,100 @@ input[type="button"], input[type="submit"] {
 textarea {
     min-width: 360px;
     min-height: 200px;
+}
+
+.addPage {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.addPage p, .addPage button {
+    background-color: green;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addPage input {
+    padding: 0;
+    margin: 0;
+}
+
+.template {
+    width: 200px;
+    margin: 0 10px;
+}
+
+.template div {
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+
+.template div img {
+    height: auto;
+    width: 100%;
+}
+
+.template input {
+    margin: 0;
+    width: 100%;
+}
+
+.templates {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.difference {
+    height: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.difference.open {
+    height: 95vh;
+}
+
+.difference p {
+    font-size: 24px;
+    width: 50%;
+}
+
+.imageContainer {
+    width: 95%;
+    height: 95%;
+    position: fixed;
+    z-index: 1000000;
+    background-color: rgba(0, 0, 0, .75);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
+.imageContainer div {
+    margin: auto auto;
+}
+
+.imageContainer div img {
+    width: auto;
+    height: 600px;
 }
