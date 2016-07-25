@@ -10,6 +10,7 @@ angular.module('ERL', ['ngSanitize'] )
         $scope.pages = [];
 
         var initPageNum = 1;
+        var typesOfPages = '';
         /** Allows the user to add pages to the scope of the project */
         $scope.addPage = function() {
             if ($scope.pagename !== undefined && $scope.pagename !== "") {
@@ -18,6 +19,7 @@ angular.module('ERL', ['ngSanitize'] )
                     name: $scope.pagename
                 });
                 initPageNum++;
+                typesOfPages += $scope.pagename + '\n';
                 $scope.pagename = "";
             }
         };
@@ -46,19 +48,53 @@ angular.module('ERL', ['ngSanitize'] )
             "img-05.png"
         ];
 
+        $scope.learnBtns = [{
+                id: "1",
+                val: "Users should learn more about my company/organization"
+            }, {
+                id: "2",
+                val: "I want users to know about events that we have"
+            }, {
+                id: "3",
+                val: "Users should learn more about my company/organization"
+            }, {
+                id: "4",
+                val: "I want users to know about events that we have"
+            }, {
+                id: "5",
+                val: "Users should learn more about my company/organization"
+            }, {
+                id: "6",
+                val: "I want users to know about events that we have"
+            }
+        ];
+
 
         $scope.sendEmail = function() {
-            var email = '';
-            var newLine = '\n';
-            email += 'Hi Resilient Lab, ' + newLine + newLine;
-            email += 'My name is ' + $scope.client.name + newLine;
-            email += 'I work for ' + $scope.client.company + newLine;
-            email += 'I am current looking to build a ' + $scope.projectType + newLine;
-            email += 'I hope have this used'
 
-            email += 'Please contact me back at ' + $scope.client.email;
+            var newLine = '\n';
+            var email = newLine;
+            var projectType = document.querySelector('input[name = "projectType"]:checked').value;
+            var learnBtns = document.querySelector('input[name = "learnBtns"]:checked').value;
+            var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
+
+            email += 'Hi Resilient Lab, ' + newLine + newLine;
+            email += 'My name is ' + $scope.client.name + 'and I work for ' + $scope.client.company + newLine;
+            email += 'I am current looking to build a ' + projectType + " with your team!" + newLine;
+            email += "Here's what I intend for those who use my " + projectType + ' to do:' + newLine;
+            email += learnBtns + newLine + " and " + $scope.moreInfo + newLine;
+            email += 'Here are the pages: ' + newLine + typesOfPages + newLine + newLine;
+            email += 'Please contact me back at ' + $scope.client.email + newLine;
+            email += "Is this a wordpress project? " + isWordpress;
 
             console.log(email);
+            document.getElementById("formToSend").name = "Potential ERL Client: \n";
+            document.getElementById("formToSend").value = '';
+            document.getElementById("formToSend").value += email;
+        }
+
+        $scope.isSelected = function() {
+
         }
 
 

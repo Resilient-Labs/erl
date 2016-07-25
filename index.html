@@ -18,14 +18,9 @@
     </div>
     <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'">DELETE</button>
 </div>
-<!--
-<div class="difference">
-    <p>The difference between a website and a web app is quite simple if you ask me.
-        I could elaborate on this subject more but I am opting not to.
-    </p>
-</div>-->
 
-<form name="form" class="css-form" novalidate>
+<form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
+      enctype="text/plain">
     <!-- FORM ENTRY #1 -->
     <section id="first">
         <h2>Thanks for your interest in Resilient Lab</h2>
@@ -40,8 +35,15 @@
     <section id="second">
         <h2>Thanks, {{client.name}}</h2>
         <p>Let's talk about your site. Would you consider this project to be a website or a web app?</p>
-        <input type="button" class="website" ng-click="projectType()" value="Website" />
-        <input type="button" class="webapp" ng-click="projectType()" value="Web App" />
+
+        <div>
+            <input id="webapp" type="radio" class="project" value="webapp" name="projectType"/>
+            <label for="webapp">Web App</label>
+            <p>|</p>
+            <input id="website" type="radio" class="project" value="website" name="projectType"/>
+            <label for="website">Web Site</label>
+        </div>
+
         <i ng-click="showMore()" >What's the difference?</i>
         <a class="continueBtn" href="#third">Continue</a>
     </section>
@@ -49,15 +51,15 @@
     <section id="third">
         <h2>We love websites!</h2>
         <p>What are users supposed to learn from the site?</p>
+        <div>
+            <li ng-repeat="btn in learnBtns" >
+                <input id="learn{{btn.id}}" type="radio" class="project" value="{{btn.val}}" name="learnBtns"/>
+                <label for="learn{{btn.id}}">{{btn.val}}</label>
+            </li>
+        </div>
 
-        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
-        <input type="button" ng-click="" value="I want users to know about events that we have" />
-        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
-        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
-        <input type="button" ng-click="" value="I want users to know about events that we have" />
-        <input type="button" ng-click="" value="Users should learn more about my company/organization" />
         <p>Anything else we should know?</p>
-        <textarea ></textarea>
+        <textarea ng-model="moreInfo"></textarea>
         <a class="continueBtn" href="#fourth">Continue</a>
     </section>
     <!-- FORM ENTRY #4 -->
@@ -71,7 +73,7 @@
             </div>
         </li>
         <div class="addPage">
-            <button ng-click="addPage()">+</button>
+            <a ng-click="addPage()">+</a>
             <input type="text" ng-model="pagename"/>
         </div>
         <a class="continueBtn" href="#fifth">Continue</a>
@@ -86,7 +88,9 @@
                 <div>
                     <img ng-click="viewThumbnail()" ng-src={{temps}}>
                 </div>
-                <input type="button" value="Select" />
+                <input id="home{{homeTemplates.indexOf(temps)+1}}" type="radio" class="project"
+                       value="home{{homeTemplates.indexOf(temps)+1}}" name="homePages"/>
+                <label for="home{{homeTemplates.indexOf(temps)+1}}">Select</label>
             </div>
         </div>
 
@@ -100,7 +104,9 @@
                 <div>
                     <img ng-click="viewThumbnail()" ng-src={{temps}}>
                 </div>
-                <input type="button" value="Select" />
+                <input id="about{{aboutTemplates.indexOf(temps)+1}}" type="radio" class="project"
+                       value="about{{aboutTemplates.indexOf(temps)+1}}" name="aboutPages"/>
+                <label for="about{{aboutTemplates.indexOf(temps)+1}}">Select</label>
             </div>
         </div>
         <a class="continueBtn" href="#sixth">Continue</a>
@@ -112,16 +118,20 @@
 
         <p>Will you be editing your site at least once a week?</p>
         <p>Does your site have a blog?</p>
-        <input type="button" ng-click="" value="Yes, Wordpress" />
-        <input type="button" ng-click="" value="No, Thank You" />
+        <div>
+            <input id="yeswp" type="radio" class="project" value="yeswp" name="isWordpress"/>
+            <label for="yeswp">Yes, Wordpress</label>
+            <input id="nowp" type="radio" class="project" value="nowp" name="isWordpress"/>
+            <label for="nowp">No, Thank You</label>
+        </div>
+
         <a class="continueBtn" href="#seventh">Continue</a>
     </section>
     <!-- FORM ENTRY #7 -->
     <section id="seventh">
         <h2>Putting your quote together now!</h2>
+        <input id="formToSend" type="hidden">
         <input type="submit" ng-click="sendEmail()" value="See Quote" />
-
-        <a class="continueBtn" href="#first">Continue</a>
     </section>
 </form>
 
