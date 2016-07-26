@@ -93,8 +93,8 @@ angular.module('ERL', ['ngSanitize'] )
                 // 8 hours at $80 / hr for web site
                 additionalCost += 640;
             }
-            $scope.quoteRange = ($scope.lowQuote + additionalCost).toString() + " to " +
-                ($scope.highQuote + additionalCost).toString()
+            $scope.quoteRange = '$' + ($scope.lowQuote + additionalCost).toString() + " to " +
+                '$' + ($scope.highQuote + additionalCost).toString()
 
         }
 
@@ -125,6 +125,8 @@ angular.module('ERL', ['ngSanitize'] )
             email += 'Here are the pages: ' + '\n' + typesOfPages + '\n';
             email += 'Here are the templates I hope to use: ' + '\n' + homeTemplates + '\n' + aboutTemplates + '\n';
             email += "Is this a wordpress project? " + isWordpress + '\n';
+
+            email += "Here was the estimated cost of the project: " + $scope.quoteRange
             email += 'Please contact me back at ' + $scope.client.email + '\n';
 
             console.log(email);
