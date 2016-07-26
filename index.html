@@ -28,7 +28,7 @@
         <input ng-model="client.name" type="text" placeholder="Name" required>
         <input ng-model="client.email" type="email" placeholder="Email" required>
         <input ng-model="client.company" type="text" placeholder="Company name">
-        <a class="continueBtn" href="#second">Continue</a>
+        <a class="Btn" href="#second">Continue</a>
     </section>
     <!-- FORM ENTRY #2 -->
     <section id="second">
@@ -44,7 +44,7 @@
         </div>
 
         <i ng-click="clickedDiff=!clickedDiff" >What's the difference?</i>
-        <a class="continueBtn" href="#third">Continue</a>
+        <a class="Btn" href="#third">Continue</a>
     </section>
     <!-- FORM ENTRY #3 -->
     <section id="third">
@@ -59,7 +59,7 @@
 
         <p>Anything else we should know?</p>
         <textarea ng-model="moreInfo"></textarea>
-        <a class="continueBtn" href="#fourth">Continue</a>
+        <a class="Btn" href="#fourth">Continue</a>
     </section>
     <!-- FORM ENTRY #4 -->
     <section id="fourth">
@@ -75,7 +75,7 @@
             <a ng-click="addPage()">+</a>
             <input type="text" ng-model="pagename"/>
         </div>
-        <a class="continueBtn" href="#fifth">Continue</a>
+        <a class="Btn" href="#fifth">Continue</a>
     </section>
     <!-- FORM ENTRY #5 -->
     <section id="fifth">
@@ -98,7 +98,7 @@
                    <span>Choose a file</span></label>
             </div>
         </div>
-        <a class="continueBtn" href="#sixth">Continue</a>
+        <a class="Btn" href="#sixth">Continue</a>
     </section>
     <!-- FORM ENTRY #6 -->
     <section id="sixth">
@@ -123,7 +123,7 @@
             <label for="file2">
                <span>Upload Your Files</span></label>
         </div>
-        <a class="continueBtn" href="#seventh">Continue</a>
+        <a class="Btn" href="#seventh">Continue</a>
     </section>
 
     <!-- FORM ENTRY #7 -->
@@ -140,13 +140,13 @@
             <label for="nowp">No, Thank You</label>
         </div>
 
-        <a class="continueBtn" href="#eighth">Continue</a>
+        <a class="Btn" href="#eighth">Continue</a>
     </section>
     <!-- FORM ENTRY #7 -->
     <section id="eighth">
         <h2>Putting your quote together now!</h2>
         <input id="formToSend" type="hidden">
-        <a class="continueBtn" href="#nineth" ng-click="calculateQuote()">See Quote</a>
+        <a class="Btn" href="#nineth" ng-click="calculateQuote()">See Quote</a>
     </section>
     <!-- FORM ENTRY #8 -->
     <section id="nineth">
@@ -154,13 +154,14 @@
         <h1>{{quoteRange}}</h1>
         <p>The rough estimate supports our mission of [[INSERT MESSAGE]],
             if you're interested in helping a young person, click below to send us a message</p>
-        <input type="submit" ng-click="sendEmail()" value="Email Us" />
+        <input class="Btn" type="submit" ng-click="sendEmail()" value="Email Us" />
     </section>
 </form>
 
+<!-- SECTION THAT EXPLAINS THE DIFFERENCE -->
 <div class="animate-slide" ng-show="clickedDiff">
     <div ng-show="clickedDiff">
-        <p>The difference between a Website and a web app is quite simple. A web app is this, while a website is this, duh, easy</p>
+        <h2>{{differenceText}}</h2>
         <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
     </div>
 </div>

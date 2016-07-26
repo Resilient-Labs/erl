@@ -35,9 +35,8 @@ angular.module('ERL', ['ngSanitize'] )
             }
         };
         $scope.clickedDiff = false;
-        $scope.showDifference = function() {
-            $scope.clickedDiff = !$scope.clickedDiff;
-        };
+        $scope.differenceText = "The difference between a Website and a web app is quite simple. " +
+            "A web app is this, while a website is this, duh, easy"
 
         // All the home page templates
         $scope.homeTemplates = [
