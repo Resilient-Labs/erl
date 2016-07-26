@@ -5,6 +5,7 @@ body {
     flex-flow: column;
     margin: 0;
     overflow-x: hidden;
+    font-family: sans-serif;
 }
 
 section {
@@ -15,6 +16,10 @@ section {
     min-height: 100vh;
     min-width: 100vw;
     background-color: #eee;
+}
+
+h1 {
+    color: #50c878;
 }
 
 h2 {
@@ -48,19 +53,18 @@ input[type="text"].ng-invalid.ng-touched, input[type="email"].ng-invalid.ng-touc
 }
 
 input[type="text"].ng-valid.ng-touched, input[type="email"].ng-valid.ng-touched {
-    background-color: #78FA89;
+    background-color: #50c878;
 }
 
 input[type="radio"]:checked + label {
-    background-color: lightgreen!important;
+    background-color: #50c878!important;
 }
 
 input[type="button"], input[type="submit"], section label, .continueBtn{
     display: flex;
     padding: 10px;
-    margin: 10px auto;
+    margin: 20px auto;
     background-color: grey;
-    border: 2px ridge grey;
     font-weight: initial;
     color: white;
     height: 60px;
@@ -121,7 +125,7 @@ textarea {
 
 .template div {
     width: 200px;
-    height: 300px;
+    height: auto;
     overflow: hidden;
     display: flex;
     justify-content:flex-start;
@@ -171,8 +175,9 @@ textarea {
     background-color: rgba(0, 0, 0, .75);
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-flow: column;
 }
 
 .hide {
@@ -180,7 +185,8 @@ textarea {
 }
 
 .imageContainer div {
-    margin: auto auto;
+    height: 88%;
+    margin: 24px auto;
 }
 
 .imageContainer div img {
@@ -189,8 +195,22 @@ textarea {
     min-height: 70vh;
 }
 
-.project {
-    display: none;
+.closeBtn {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    border: 3px solid white;
+    background-color: transparent;
+}
+
+.closeBtn:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: white;
 }
 
 #second div , #third div, #sixth div {
@@ -207,4 +227,12 @@ textarea {
     font-size: 64px;
     margin: 20px 0;
     font-weight: lighter;
+}
+
+.selectBtn {
+    margin: 0px auto;
+    border: none;
+    width: 100%;
+    padding: 10px 0;
+    height: 40px;
 }

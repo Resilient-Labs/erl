@@ -16,7 +16,7 @@
 <div ng-class="isEnlarged ? 'imageContainer' : 'hide'">
     <div ng-bind-html="viewedImage">
     </div>
-    <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'">DELETE</button>
+    <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
 </div>
 
 <form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
@@ -26,9 +26,9 @@
         <h2>Thanks for your interest in Resilient Lab</h2>
         <p>We have a few questions for you before we can give you a quote. The first one is easy, tell us about
             yourself: </p>
-        <input ng-model="client.name" type="text" placeholder="name" required>
-        <input ng-model="client.email" type="email" placeholder="email" required>
-        <input ng-model="client.company" type="text" placeholder="company name">
+        <input ng-model="client.name" type="text" placeholder="Name" required>
+        <input ng-model="client.email" type="email" placeholder="Email" required>
+        <input ng-model="client.company" type="text" placeholder="Company name">
         <a class="continueBtn" href="#second">Continue</a>
     </section>
     <!-- FORM ENTRY #2 -->
@@ -37,10 +37,10 @@
         <p>Let's talk about your site. Would you consider this project to be a website or a web app?</p>
 
         <div>
-            <input id="webapp" type="radio" class="project" value="webapp" name="projectType"/>
+            <input id="webapp" type="radio" class="hide" value="webapp" name="projectType"/>
             <label for="webapp">Web App</label>
             <p>|</p>
-            <input id="website" type="radio" class="project" value="website" name="projectType"/>
+            <input id="website" type="radio" class="hide" value="website" name="projectType"/>
             <label for="website">Web Site</label>
         </div>
 
@@ -53,7 +53,7 @@
         <p>What are users supposed to learn from the site?</p>
         <div>
             <li ng-repeat="btn in learnBtns" >
-                <input id="learn{{btn.id}}" type="radio" class="project" value="{{btn.val}}" name="learnBtns"/>
+                <input id="learn{{btn.id}}" type="radio" class="hide" value="{{btn.val}}" name="learnBtns"/>
                 <label for="learn{{btn.id}}">{{btn.val}}</label>
             </li>
         </div>
@@ -88,9 +88,9 @@
                 <div>
                     <img ng-click="viewThumbnail()" ng-src={{temps}}>
                 </div>
-                <input id="home{{homeTemplates.indexOf(temps)+1}}" type="radio" class="project"
+                <input id="home{{homeTemplates.indexOf(temps)+1}}" type="radio" class="hide"
                        value="home{{homeTemplates.indexOf(temps)+1}}" name="homePages"/>
-                <label for="home{{homeTemplates.indexOf(temps)+1}}">Select</label>
+                <label for="home{{homeTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
         </div>
 
@@ -104,9 +104,9 @@
                 <div>
                     <img ng-click="viewThumbnail()" ng-src={{temps}}>
                 </div>
-                <input id="about{{aboutTemplates.indexOf(temps)+1}}" type="radio" class="project"
+                <input id="about{{aboutTemplates.indexOf(temps)+1}}" type="radio" class="hide"
                        value="about{{aboutTemplates.indexOf(temps)+1}}" name="aboutPages"/>
-                <label for="about{{aboutTemplates.indexOf(temps)+1}}">Select</label>
+                <label for="about{{aboutTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
         </div>
         <a class="continueBtn" href="#sixth">Continue</a>
@@ -119,9 +119,9 @@
         <p>Will you be editing your site at least once a week?</p>
         <p>Does your site have a blog?</p>
         <div>
-            <input id="yeswp" type="radio" class="project" value="yeswp" name="isWordpress"/>
+            <input id="yeswp" type="radio" class="hide" value="yeswp" name="isWordpress"/>
             <label for="yeswp">Yes, Wordpress</label>
-            <input id="nowp" type="radio" class="project" value="nowp" name="isWordpress"/>
+            <input id="nowp" type="radio" class="hide" value="nowp" name="isWordpress"/>
             <label for="nowp">No, Thank You</label>
         </div>
 
@@ -131,7 +131,15 @@
     <section id="seventh">
         <h2>Putting your quote together now!</h2>
         <input id="formToSend" type="hidden">
-        <input type="submit" ng-click="sendEmail()" value="See Quote" />
+        <a class="continueBtn" href="#eighth" ng-click="calculateQuote()">See Quote</a>
+    </section>
+    <!-- FORM ENTRY #8 -->
+    <section id="eighth">
+        <h2>Here's how much we think the site will cost: </h2>
+        <h1>{{quoteRange}}</h1>
+        <p>The rough estimate supports our mission of [[INSERT MESSAGE]],
+            if you're interested in helping a young person, click below to send us a message</p>
+        <input type="submit" ng-click="sendEmail()" value="Send Message" />
     </section>
 </form>
 

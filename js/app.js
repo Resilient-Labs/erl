@@ -3,14 +3,18 @@
  */
 angular.module('ERL', ['ngSanitize'] )
     .controller('AppCtrl', function ($scope) {
-        $scope.client = {
-        };
+        $scope.client = {};
         console.log($scope.client);
 
         $scope.pages = [];
 
         var initPageNum = 1;
         var typesOfPages = '';
+
+
+        $scope.lowQuote = 500;
+        $scope.highQuote = 1500;
+
         /** Allows the user to add pages to the scope of the project */
         $scope.addPage = function() {
             if ($scope.pagename !== undefined && $scope.pagename !== "") {
@@ -49,43 +53,79 @@ angular.module('ERL', ['ngSanitize'] )
         ];
 
         $scope.learnBtns = [{
-                id: "1",
-                val: "Users should learn more about my company/organization"
-            }, {
-                id: "2",
-                val: "I want users to know about events that we have"
-            }, {
-                id: "3",
-                val: "Users should learn more about my company/organization"
-            }, {
-                id: "4",
-                val: "I want users to know about events that we have"
-            }, {
-                id: "5",
-                val: "Users should learn more about my company/organization"
-            }, {
-                id: "6",
-                val: "I want users to know about events that we have"
-            }
+            id: "1",
+            val: "Users should learn more about my company/organization"
+        }, {
+            id: "2",
+            val: "I want users to know about events that we have"
+        }, {
+            id: "3",
+            val: "Users should learn more about my company/organization"
+        }, {
+            id: "4",
+            val: "I want users to know about events that we have"
+        }, {
+            id: "5",
+            val: "Users should learn more about my company/organization"
+        }, {
+            id: "6",
+            val: "I want users to know about events that we have"
+        }
         ];
 
+        $scope.calculateQuote = function() {
+            var additionalCost = 0;
+            var costPerPage = $scope.pages.length * 120;
+            // 1.5 hours per page
+            additionalCost += costPerPage;
+
+            var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
+            if (isWordpress == 'yeswp') {
+                // 12 additional hours for WordPress
+                additionalCost += 960;
+            }
+
+            var projectType = document.querySelector('input[name = "projectType"]:checked').value;
+            if (projectType == 'webapp') {
+                // 28 additional hours at $80 / hr for Web App
+                additionalCost += 2240;
+            } else {
+                // 8 hours at $80 / hr for web site
+                additionalCost += 640;
+            }
+            $scope.quoteRange = ($scope.lowQuote + additionalCost).toString() + " to " +
+                ($scope.highQuote + additionalCost).toString()
+
+        }
 
         $scope.sendEmail = function() {
 
-            var newLine = '\n';
-            var email = newLine;
+            var email = '\n';
             var projectType = document.querySelector('input[name = "projectType"]:checked').value;
             var learnBtns = document.querySelector('input[name = "learnBtns"]:checked').value;
             var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
+            if (isWordpress == 'yeswp') {
+                isWordpress = 'Yes'
+            } else {
+                isWordpress = 'No'
+            }
+            var homeTemplates = document.querySelector('input[name = "homePages"]:checked').value;
+            var aboutTemplates = document.querySelector('input[name = "aboutPages"]:checked').value;
 
-            email += 'Hi Resilient Lab, ' + newLine + newLine;
-            email += 'My name is ' + $scope.client.name + 'and I work for ' + $scope.client.company + newLine;
-            email += 'I am current looking to build a ' + projectType + " with your team!" + newLine;
-            email += "Here's what I intend for those who use my " + projectType + ' to do:' + newLine;
-            email += learnBtns + newLine + " and " + $scope.moreInfo + newLine;
-            email += 'Here are the pages: ' + newLine + typesOfPages + newLine + newLine;
-            email += 'Please contact me back at ' + $scope.client.email + newLine;
-            email += "Is this a wordpress project? " + isWordpress;
+            email += 'Hi Resilient Lab, ' + '\n' + '\n';
+            email += 'My name is ' + $scope.client.name + ' and I work for ' + $scope.client.company + '\n';
+            email += 'I am current looking to build a ' + projectType + " with your team!" + '\n';
+            email += "Here's what I intend for those who use my " + projectType + ' to do:' + '\n';
+            email += learnBtns + '\n';
+
+            if ($scope.moreInfo !== undefined && $scope.moreInfo !== '') {
+                email += " and " + $scope.moreInfo + '\n';
+            }
+
+            email += 'Here are the pages: ' + '\n' + typesOfPages + '\n';
+            email += 'Here are the templates I hope to use: ' + '\n' + homeTemplates + '\n' + aboutTemplates + '\n';
+            email += "Is this a wordpress project? " + isWordpress + '\n';
+            email += 'Please contact me back at ' + $scope.client.email + '\n';
 
             console.log(email);
             document.getElementById("formToSend").name = "Potential ERL Client: \n";
