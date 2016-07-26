@@ -225,7 +225,7 @@ textarea {
     border: white;
 }
 
-#second div , #third div, #sixth div {
+#second div , #third div, #seventh div {
     max-width: 600px;
     display: flex;
     width: 50%;
@@ -249,6 +249,17 @@ textarea {
     height: 40px;
 }
 
+.upload {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+svg {
+    fill: white;
+}
+
 .inputfile {
     width: 0.1px;
     height: 0.1px;
@@ -260,21 +271,23 @@ textarea {
 
 .inputfile + label {
     height: 30px;
+    width: 240px;
     text-align: center;
     font-size: 1.25em;
     font-weight: 700;
     color: white;
-    background-color: black;
+    background-color: grey;
     display: inline-block;
 }
 
 .inputfile:focus + label,
 .inputfile + label:hover {
-    background-color: red;
+    background-color: grey;
 }
 
 .inputfile + label {
-    cursor: pointer; /* "hand" cursor */
+    cursor: pointer;
+    display: flex;
 }
 
 .inputfile:focus + label {
@@ -314,10 +327,7 @@ textarea {
     margin: 0 auto;
 }
 
-.animate-slide.ng-hide-add,
-.animate-slide.ng-hide-remove {
-    display:block!important;
-}
+
 
 .animate-slide.ng-hide {
     top:100%;

@@ -18,13 +18,6 @@
     <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
 </div>
 
-<div class="animate-slide" ng-show="clickedDiff">
-    <div ng-show="clickedDiff">
-        <p>The difference between a Website and a web app is quite simple. A web app is this, while a website is this, duh, easy</p>
-        <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
-    </div>
-</div>
-
 <form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
       enctype="text/plain">
     <!-- FORM ENTRY #1 -->
@@ -98,13 +91,17 @@
                        value="home{{homeTemplates.indexOf(temps)+1}}" name="homePages"/>
                 <label for="home{{homeTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
-            <div>
+            <div class="upload">
                 <br>
                 <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-                <label for="file"><span>Choose a file</span></label>
+                <label for="file">
+                   <span>Choose a file</span></label>
             </div>
         </div>
-
+        <a class="continueBtn" href="#sixth">Continue</a>
+    </section>
+    <!-- FORM ENTRY #6 -->
+    <section id="sixth">
         <h2>Interior pages need love, too!</h2>
         <p>The interior pages are all of the pages of your site that aren't the homepage. Check out our templates for
             blogs, event calendars, contact forms, and general static pages.</p>
@@ -120,10 +117,17 @@
                 <label for="about{{aboutTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
         </div>
-        <a class="continueBtn" href="#sixth">Continue</a>
+        <div class="upload">
+            <br>
+            <input type="file" name="file" id="file2" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+            <label for="file2">
+               <span>Upload Your Files</span></label>
+        </div>
+        <a class="continueBtn" href="#seventh">Continue</a>
     </section>
-    <!-- FORM ENTRY #6 -->
-    <section id="sixth">
+
+    <!-- FORM ENTRY #7 -->
+    <section id="seventh">
         <h2>Last question, do you need Wordpress?</h2>
         <p>How often do you need to edit your site? </p>
 
@@ -136,16 +140,16 @@
             <label for="nowp">No, Thank You</label>
         </div>
 
-        <a class="continueBtn" href="#seventh">Continue</a>
+        <a class="continueBtn" href="#eighth">Continue</a>
     </section>
     <!-- FORM ENTRY #7 -->
-    <section id="seventh">
+    <section id="eighth">
         <h2>Putting your quote together now!</h2>
         <input id="formToSend" type="hidden">
-        <a class="continueBtn" href="#eighth" ng-click="calculateQuote()">See Quote</a>
+        <a class="continueBtn" href="#nineth" ng-click="calculateQuote()">See Quote</a>
     </section>
     <!-- FORM ENTRY #8 -->
-    <section id="eighth">
+    <section id="nineth">
         <h2>Here's how much we think the site will cost: </h2>
         <h1>{{quoteRange}}</h1>
         <p>The rough estimate supports our mission of [[INSERT MESSAGE]],
@@ -153,6 +157,13 @@
         <input type="submit" ng-click="sendEmail()" value="Email Us" />
     </section>
 </form>
+
+<div class="animate-slide" ng-show="clickedDiff">
+    <div ng-show="clickedDiff">
+        <p>The difference between a Website and a web app is quite simple. A web app is this, while a website is this, duh, easy</p>
+        <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
 
 <script type="text/javascript">
     var inputs = document.querySelectorAll( '.inputfile' );
