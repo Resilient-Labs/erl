@@ -12,11 +12,17 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
-
 <div ng-class="isEnlarged ? 'imageContainer' : 'hide'">
     <div ng-bind-html="viewedImage">
     </div>
     <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
+</div>
+
+<div class="animate-slide" ng-show="clickedDiff">
+    <div ng-show="clickedDiff">
+        <p>The difference between a Website and a web app is quite simple. A web app is this, while a website is this, duh, easy</p>
+        <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
 </div>
 
 <form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
@@ -44,7 +50,7 @@
             <label for="website">Web Site</label>
         </div>
 
-        <i ng-click="showMore()" >What's the difference?</i>
+        <i ng-click="clickedDiff=!clickedDiff" >What's the difference?</i>
         <a class="continueBtn" href="#third">Continue</a>
     </section>
     <!-- FORM ENTRY #3 -->
@@ -91,6 +97,11 @@
                 <input id="home{{homeTemplates.indexOf(temps)+1}}" type="radio" class="hide"
                        value="home{{homeTemplates.indexOf(temps)+1}}" name="homePages"/>
                 <label for="home{{homeTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
+            </div>
+            <div>
+                <br>
+                <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+                <label for="file"><span>Choose a file</span></label>
             </div>
         </div>
 
@@ -139,9 +150,32 @@
         <h1>{{quoteRange}}</h1>
         <p>The rough estimate supports our mission of [[INSERT MESSAGE]],
             if you're interested in helping a young person, click below to send us a message</p>
-        <input type="submit" ng-click="sendEmail()" value="Send Message" />
+        <input type="submit" ng-click="sendEmail()" value="Email Us" />
     </section>
 </form>
+
+<script type="text/javascript">
+    var inputs = document.querySelectorAll( '.inputfile' );
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+        var label	 = input.nextElementSibling,
+                labelVal = label.innerHTML;
+
+        input.addEventListener( 'change', function( e )
+        {
+            var fileName = '';
+            if( this.files && this.files.length > 1 )
+                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+            else
+                fileName = e.target.value.split( '\\' ).pop();
+
+            if( fileName )
+                label.querySelector( 'span' ).innerHTML = fileName;
+            else
+                label.innerHTML = labelVal;
+        });
+    });
+</script>
 
 </body>
 </html>

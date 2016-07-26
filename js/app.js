@@ -34,6 +34,10 @@ angular.module('ERL', ['ngSanitize'] )
                 $scope.viewedImage = "";
             }
         };
+        $scope.clickedDiff = false;
+        $scope.showDifference = function() {
+            $scope.clickedDiff = !$scope.clickedDiff;
+        };
 
         // All the home page templates
         $scope.homeTemplates = [
@@ -65,7 +69,7 @@ angular.module('ERL', ['ngSanitize'] )
             val: "Users should learn more about my company/organization"
         }, {
             id: "6",
-            val: "I want users to know about events that we have"
+            val: "Other"
         }
         ];
 
