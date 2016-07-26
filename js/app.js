@@ -1,10 +1,6 @@
-/**
- * Created by Unaka Muigai on 7/21/2016.
- */
 angular.module('ERL', ['ngSanitize'] )
     .controller('AppCtrl', function ($scope) {
         $scope.client = {};
-        console.log($scope.client);
 
         $scope.pages = [];
 
@@ -133,11 +129,7 @@ angular.module('ERL', ['ngSanitize'] )
             document.getElementById("formToSend").name = "Potential ERL Client: \n";
             document.getElementById("formToSend").value = '';
             document.getElementById("formToSend").value += email;
-        }
-
-        $scope.isSelected = function() {
-
-        }
+        };
 
 
     });
