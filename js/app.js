@@ -7,10 +7,6 @@ angular.module('ERL', ['ngSanitize'] )
         var initPageNum = 1;
         var typesOfPages = '';
 
-
-        $scope.lowQuote = 500;
-        $scope.highQuote = 1500;
-
         /** Allows the user to add pages to the scope of the project */
         $scope.addPage = function() {
             if ($scope.pagename !== undefined && $scope.pagename !== "") {
@@ -36,7 +32,11 @@ angular.module('ERL', ['ngSanitize'] )
         };
         $scope.clickedDiff = false;
         $scope.differenceText = "The difference between a Website and a web app is quite simple. " +
-            "A web app is this, while a website is this, duh, easy"
+            "A web app is this, while a website is this, duh, easy";
+        $scope.clickedWP = false;
+        $scope.wordpressText = "How often do you need to edit your site? " +
+            "Will you be editing your site at least once a week?" +
+            "Does your site have a blog?";
 
         // All the home page templates
         $scope.homeTemplates = [
@@ -72,18 +72,21 @@ angular.module('ERL', ['ngSanitize'] )
         }
         ];
 
+        $scope.lowQuote = 500;
+        $scope.highQuote = 1500;
+
         $scope.calculateQuote = function() {
             var additionalCost = 0;
+            // multiples $120 per page (the array length of the amount of pages the user input)
             var costPerPage = $scope.pages.length * 120;
             // 1.5 hours per page
             additionalCost += costPerPage;
 
             var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
             if (isWordpress == 'yeswp') {
-                // 12 additional hours for WordPress
+                // 12 additional hours for WordPress, adds 960
                 additionalCost += 960;
             }
-
             var projectType = document.querySelector('input[name = "projectType"]:checked').value;
             if (projectType == 'webapp') {
                 // 28 additional hours at $80 / hr for Web App

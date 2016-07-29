@@ -18,16 +18,19 @@
     <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
 </div>
 
-<form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
-      enctype="text/plain">
+<!--<form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
+      enctype="text/plain">-->
+
+    <form name="form" class="css-form" novalidate id="gform" method="POST" class="pure-form pure-form-stacked"
+          action="https://script.google.com/macros/s/AKfycbyAQkJ4lG2Ub7MQQjeJH4SqAqeryI7m-rsV0ObGKGrMcdDhB8wl/exec">
     <!-- FORM ENTRY #1 -->
     <section id="first">
         <h2>Thanks for your interest in Resilient Lab</h2>
         <p>We have a few questions for you before we can give you a quote. The first one is easy, tell us about
             yourself: </p>
-        <input ng-model="client.name" type="text" placeholder="Name" required>
-        <input ng-model="client.email" type="email" placeholder="Email" required>
-        <input ng-model="client.company" type="text" placeholder="Company name">
+        <input id="name" ng-model="client.name" type="text" name="name" placeholder="Name" required>
+        <input id="email" ng-model="client.email" type="email" name="email" placeholder="Email" required>
+        <input id="company" ng-model="client.company" type="text" name="company" placeholder="Company name">
         <a class="Btn" href="#second">Continue</a>
     </section>
     <!-- FORM ENTRY #2 -->
@@ -58,7 +61,7 @@
         </div>
 
         <p>Anything else we should know?</p>
-        <textarea ng-model="moreInfo"></textarea>
+        <textarea id="moreinfo" ng-model="moreInfo"></textarea>
         <a class="Btn" href="#fourth">Continue</a>
     </section>
     <!-- FORM ENTRY #4 -->
@@ -68,7 +71,7 @@
         <li ng-repeat="page in pages">
             <div class="addPage">
                 <p>{{page.id}}</p>
-                <input type="text" value="{{page.name}}" readonly/>
+                <input type="text" value="{{page.name}}" id="pages" name="pages"readonly/>
             </div>
         </li>
         <div class="addPage">
@@ -129,10 +132,7 @@
     <!-- FORM ENTRY #7 -->
     <section id="seventh">
         <h2>Last question, do you need Wordpress?</h2>
-        <p>How often do you need to edit your site? </p>
-
-        <p>Will you be editing your site at least once a week?</p>
-        <p>Does your site have a blog?</p>
+        <i ng-click="clickedWP=!clickedWP" >I don't know, why would I need Wordpress?</i>
         <div>
             <input id="yeswp" type="radio" class="hide" value="yeswp" name="isWordpress"/>
             <label for="yeswp">Yes, Wordpress</label>
@@ -145,7 +145,7 @@
     <!-- FORM ENTRY #7 -->
     <section id="eighth">
         <h2>Putting your quote together now!</h2>
-        <input id="formToSend" type="hidden">
+        <!--<input id="formToSend" type="hidden">-->
         <a class="Btn" href="#nineth" ng-click="calculateQuote()">See Quote</a>
     </section>
     <!-- FORM ENTRY #8 -->
@@ -154,7 +154,7 @@
         <h1>{{quoteRange}}</h1>
         <p>The rough estimate supports our mission of [[INSERT MESSAGE]],
             if you're interested in helping a young person, click below to send us a message</p>
-        <input class="Btn" type="submit" ng-click="sendEmail()" value="Email Us" />
+        <input class="Btn" type="submit" value="Email Us" />
     </section>
 </form>
 
@@ -165,6 +165,25 @@
         <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
     </div>
 </div>
+
+<!-- SECTION THAT EXPLAINS WHY YOU WOULD CHOOSE WORDPRESS -->
+<div class="animate-slide" ng-show="clickedWP">
+    <div ng-show="clickedWP">
+        <h2>{{wordpressText}}</h2>
+        <button ng-click="clickedWP=!clickedWP" ng-class="clickedWP ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
+
+<section style="display:none;" id="thankyou_message">
+    <h2><em>Thanks</em> for contacting us!
+        We will get back to you soon!</h2>
+</section>
+
+
+<script data-cfasync="false" type="text/javascript"
+        src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js">
+
+</script>
 
 <script type="text/javascript">
     var inputs = document.querySelectorAll( '.inputfile' );
