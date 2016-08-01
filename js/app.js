@@ -72,6 +72,36 @@ angular.module('ERL', ['ngSanitize'] )
         }
         ];
 
+        $scope.erlpages = [{
+            id: "1",
+            val: "Home"
+        }, {
+            id: "2",
+            val: "About"
+        }, {
+            id: "3",
+            val: "Contact"
+        }, {
+            id: "4",
+            val: "Content"
+        }, {
+            id: "5",
+            val: "PageName"
+        }, {
+            id: "6",
+            val: "PageName"
+        }, {
+            id: "7",
+            val: "PageName"
+        }, {
+            id: "8",
+            val: "PageName"
+        }, {
+            id: "9",
+            val: "Other"
+        }];
+
+
         $scope.lowQuote = 500;
         $scope.highQuote = 1500;
 

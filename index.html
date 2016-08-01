@@ -55,7 +55,7 @@
         <p>What are users supposed to learn from the site?</p>
         <div>
             <li ng-repeat="btn in learnBtns" >
-                <input id="learn{{btn.id}}" type="radio" class="hide" value="{{btn.val}}" name="learnBtns"/>
+                <input id="learn{{btn.id}}" type="checkbox" class="hide" value="{{btn.val}}" name="learnBtns"/>
                 <label for="learn{{btn.id}}">{{btn.val}}</label>
             </li>
         </div>
@@ -68,6 +68,8 @@
     <section id="fourth">
         <h2>How big is this project?</h2>
         <p>How many pages will the site have, and what are they?</p>
+        <!--
+        Add pages button
         <li ng-repeat="page in pages">
             <div class="addPage">
                 <p>{{page.id}}</p>
@@ -77,6 +79,12 @@
         <div class="addPage">
             <a ng-click="addPage()">+</a>
             <input type="text" ng-model="pagename"/>
+        </div>-->
+        <div class="flexbox">
+            <li ng-repeat="page in erlpages" >
+                <input id="erlpages{{page.id}}" type="checkbox" class="hide" value="{{page.val}}" name="erlpages"/>
+                <label for="erlpages{{page.id}}">{{page.val}}</label>
+            </li>
         </div>
         <a class="Btn" href="#fifth">Continue</a>
     </section>
@@ -102,8 +110,6 @@
                    <span>Choose a file</span></label>
             </div>-->
         </div>
-        <br>
-        <i ng-click="clickedUpload=!clickedUpload" >Have your own files? Upload them here!</i>
         <a class="Btn" href="#sixth">Continue</a>
     </section>
     <!-- FORM ENTRY #6 -->
@@ -123,8 +129,6 @@
                 <label for="about{{aboutTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
         </div>
-        <br>
-        <i ng-click="clickedUpload=!clickedUpload" >Have your own files? Upload them here!</i>
         <!--
         WOULDVE BEEN UPLOAD SECTION
         <div class="upload">

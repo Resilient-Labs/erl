@@ -92,7 +92,7 @@ input[type="text"].ng-valid.ng-touched, input[type="email"].ng-valid.ng-touched 
     color: #50c878;
 }
 
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + label, input[type="checkbox"]:checked + label {
     background-color: #ed1b24!important;
     color: #fff;
 }
@@ -269,7 +269,7 @@ textarea {
     border: white;
 }
 
-#second div , #third div, #seventh div {
+#second div , #third div, #fourth div, #seventh div {
     max-width: 600px;
     display: flex;
     width: 50%;
