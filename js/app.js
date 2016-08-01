@@ -79,21 +79,17 @@ angular.module('ERL', ['ngSanitize'] )
             var additionalCost = 0;
             // multiples $120 per page (the array length of the amount of pages the user input)
             var costPerPage = $scope.pages.length * 120;
-            // 1.5 hours per page
-            additionalCost += costPerPage;
+            additionalCost += costPerPage; // 1.5 hours per page
 
             var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
             if (isWordpress == 'yeswp') {
-                // 12 additional hours for WordPress, adds 960
-                additionalCost += 960;
+                additionalCost += 960; // 12 additional hours for WordPress, adds 960
             }
             var projectType = document.querySelector('input[name = "projectType"]:checked').value;
             if (projectType == 'webapp') {
-                // 28 additional hours at $80 / hr for Web App
-                additionalCost += 2240;
+                additionalCost += 2240; // 28 additional hours at $80 / hr for Web App
             } else {
-                // 8 hours at $80 / hr for web site
-                additionalCost += 640;
+                additionalCost += 640; // 8 hours at $80 / hr for web site
             }
             $scope.quoteRange = '$' + ($scope.lowQuote + additionalCost).toString() + " to " +
                 '$' + ($scope.highQuote + additionalCost).toString()

@@ -94,13 +94,16 @@
                        value="home{{homeTemplates.indexOf(temps)+1}}" name="homePages"/>
                 <label for="home{{homeTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
-            <div class="upload">
+
+            <!--<div class="upload">
                 <br>
                 <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
                 <label for="file">
                    <span>Choose a file</span></label>
-            </div>
+            </div>-->
         </div>
+        <br>
+        <i ng-click="clickedUpload=!clickedUpload" >Have your own files? Upload them here!</i>
         <a class="Btn" href="#sixth">Continue</a>
     </section>
     <!-- FORM ENTRY #6 -->
@@ -120,12 +123,16 @@
                 <label for="about{{aboutTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
             </div>
         </div>
+        <br>
+        <i ng-click="clickedUpload=!clickedUpload" >Have your own files? Upload them here!</i>
+        <!--
+        WOULDVE BEEN UPLOAD SECTION
         <div class="upload">
             <br>
             <input type="file" name="file" id="file2" class="inputfile" data-multiple-caption="{count} files selected" multiple />
             <label for="file2">
                <span>Upload Your Files</span></label>
-        </div>
+        </div>-->
         <a class="Btn" href="#seventh">Continue</a>
     </section>
 
@@ -173,6 +180,7 @@
         <button ng-click="clickedWP=!clickedWP" ng-class="clickedWP ? '' : 'hide'" class="closeBtn">X</button>
     </div>
 </div>
+<!-- SECTION THAT USERS CAN UPLOAD DESIGNS TO -->
 
 <section style="display:none;" id="thankyou_message">
     <h2><em>Thanks</em> for contacting us!
