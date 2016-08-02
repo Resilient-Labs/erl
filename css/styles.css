@@ -12,7 +12,7 @@ body {
     flex-flow: column;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     font-family: sans-serif;
 }
 
@@ -269,7 +269,7 @@ textarea {
     border: white;
 }
 
-#second div , #third div, #fourth div, #seventh div {
+#second div , #third div, .selectedPages div, #seventh div {
     max-width: 600px;
     display: flex;
     width: 50%;

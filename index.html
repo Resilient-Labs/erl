@@ -12,16 +12,48 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
+<!-- SECTION THAT EXPLAINS THE DIFFERENCE -->
+<div class="animate-slide" ng-show="clickedDiff">
+    <div ng-show="clickedDiff">
+        <h2>{{differenceText}}</h2>
+        <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
+
+<!-- SECTION THAT EXPLAINS WHY YOU WOULD CHOOSE WORDPRESS -->
+<div class="animate-slide" ng-show="clickedWP">
+    <div ng-show="clickedWP">
+        <h2>{{wordpressText}}</h2>
+        <button ng-click="clickedWP=!clickedWP" ng-class="clickedWP ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
+<!-- THANK YOU MESSAGE SECTION -->
+<div class="animate-slide" ng-show="formComplete" id="thankyou_message">
+    <div ng-show="formComplete">
+        <h2><em>Thanks</em> for contacting us {{client.name}}!
+            We will get back to you soon!</h2>
+        <button ng-click="formComplete=!formComplete" ng-class="formComplete ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
+
+<!-- START SCREEN MESSAGE SECTION -->
+<div class="animate-slide" ng-show="formComplete" id="start">
+    <div ng-show="formComplete">
+        <h2><em>Thanks</em> for contacting us {{client.name}}!
+            We will get back to you soon!</h2>
+        <button ng-click="formComplete=!formComplete" ng-class="formComplete ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
+
+
+
 <div ng-class="isEnlarged ? 'imageContainer' : 'hide'">
     <div ng-bind-html="viewedImage">
     </div>
     <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
 </div>
-
-<!--<form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
-      enctype="text/plain">-->
-
-    <form name="form" class="css-form" novalidate ng-submit='setChecked()' id="gform" method="POST" class="pure-form pure-form-stacked"
+<!-- Express Resilient Lab Form version 1.10  developed by Resilient Lab, tested by East Coast Product & Fresh Tilled Soil -->
+<form name="form" class="css-form" novalidate ng-submit='setChecked()' id="gform" method="POST" class="pure-form pure-form-stacked"
           action="https://script.google.com/macros/s/AKfycbyAQkJ4lG2Ub7MQQjeJH4SqAqeryI7m-rsV0ObGKGrMcdDhB8wl/exec">
     <!-- FORM ENTRY #1 -->
     <section id="first">
@@ -69,81 +101,53 @@
     <section id="fourth">
         <h2>How big is this project?</h2>
         <p>How many pages will the site have, and what are they?</p>
-        <!--
-        Add pages button
-        <li ng-repeat="page in pages">
-            <div class="addPage">
-                <p>{{page.id}}</p>
-                <input type="text" value="{{page.name}}" id="pages" name="pages"readonly/>
-            </div>
-        </li>
-        <div class="addPage">
-            <a ng-click="addPage()">+</a>
-            <input type="text" ng-model="pagename"/>
-        </div>-->
-        <div class="flexbox">
+        <div>
             <li ng-repeat="page in selectPages" >
                 <input id="selectPages{{page.id}}" type="checkbox" class="hide" value="{{page.val}}" name="selectPages"/>
                 <label for="selectPages{{page.id}}">{{page.val}}</label>
-                <input id="pagina{{page.id}}" type="hidden" value="" name="pagina{{page.id}}">
             </li>
         </div>
-        <a class="Btn" href="#fifth">Continue</a>
+        <a class="Btn" href="#page1" ng-click="setPages()">Continue</a>
     </section>
-    <!-- FORM ENTRY #5 -->
-    <section id="fifth">
-        <h2>Let's talk design</h2>
-        <p>For each page, choose a template that you think fits your content. Let's start with the homepage - pick a
-            homepage template</p>
-        <div class="templates">
-            <div class="template" ng-repeat="temps in homeTemplates">
-                <div>
-                    <img ng-click="viewThumbnail()" ng-src={{temps}}>
-                </div>
-                <input id="home{{homeTemplates.indexOf(temps)+1}}" type="radio" class="hide"
-                       value="home{{homeTemplates.indexOf(temps)+1}}" name="homePages"/>
-                <label for="home{{homeTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
-            </div>
+    <!-- FORM ENTRY TEMPLATES -->
+        <section class=selectedPages" id="page{{pg.idx}}" ng-repeat="pg in selectedPages">
+            <h2 ng-if="$first">Let's talk design</h2>
+            <p ng-if="$first">For each page, choose a template that you think fits your content. Let's start with the homepage - pick a
+                homepage template</p>
 
-            <!--<div class="upload">
-                <br>
-                <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-                <label for="file">
-                   <span>Choose a file</span></label>
-            </div>-->
-        </div>
-        <a class="Btn" href="#sixth">Continue</a>
-    </section>
-    <!-- FORM ENTRY #6 -->
-    <section id="sixth">
-        <h2>Interior pages need love, too!</h2>
-        <p>The interior pages are all of the pages of your site that aren't the homepage. Check out our templates for
-            blogs, event calendars, contact forms, and general static pages.</p>
+            <h2 ng-if="!$first">Interior pages need love, too!</h2>
+            <p ng-if="!$first">The interior pages are all of the pages of your site that aren't the homepage. Check out our templates for
+                blogs, event calendars, contact forms, and general static pages.</p>
 
-        <h2>Template for - About</h2>
-        <div class="templates">
-            <div class="template" ng-repeat="temps in aboutTemplates">
-                <div>
-                    <img ng-click="viewThumbnail()" ng-src={{temps}}>
+            <h2 ng-if="!$first">Template for - {{pg.name}}</h2>
+
+            <div class="templates">
+                <div class="template" ng-repeat="temps in templateSet1" ng-show="showTemplates">
+                    <div>
+                        <img ng-click="viewThumbnail()" ng-src={{temps}}>
+                    </div>
+                    <input id="template{{templateSet1.indexOf(temps)+1}}idx{{pg.idx}}" type="radio" class="hide"
+                           value="template{{templateSet1.indexOf(temps)+1}}" name="{{pg.name}}"/>
+                    <label for="template{{templateSet1.indexOf(temps)+1}}idx{{pg.idx}}" class="selectBtn">Select</label>
                 </div>
-                <input id="about{{aboutTemplates.indexOf(temps)+1}}" type="radio" class="hide"
-                       value="about{{aboutTemplates.indexOf(temps)+1}}" name="aboutPages"/>
-                <label for="about{{aboutTemplates.indexOf(temps)+1}}" class="selectBtn">Select</label>
+                <div class="template" ng-hide="showTemplates" ng-repeat="temps in templateSet2">
+                    <div>
+                        <img ng-click="viewThumbnail()" ng-src={{temps}}>
+                    </div>
+                    <input id="template{{templateSet2.indexOf(temps)+5}}idx{{pg.idx}}" type="radio" class="hide"
+                           value="template{{templateSet2.indexOf(temps)+5}}" name="{{pg.name}}"/>
+                    <label for="template{{templateSet2.indexOf(temps)+5}}idx{{pg.idx}}" class="selectBtn">Select</label>
+                </div>
             </div>
-        </div>
-        <!--
-        WOULDVE BEEN UPLOAD SECTION
-        <div class="upload">
             <br>
-            <input type="file" name="file" id="file2" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-            <label for="file2">
-               <span>Upload Your Files</span></label>
-        </div>-->
-        <a class="Btn" href="#seventh">Continue</a>
-    </section>
+            <a ng-click="showTemplates=!showTemplates">CLICK</a>
 
-    <!-- FORM ENTRY #7 -->
-    <section id="seventh">
+            <a class="Btn" href="#page{{pg.idx+1}}" ng-if="!$last">Select Next</a>
+            <a class="Btn" href="#sixth" ng-if="$last">Continue</a>
+        </section>
+
+        <!-- FORM ENTRY #6 -->
+    <section id="sixth">
         <h2>Last question, do you need Wordpress?</h2>
         <i ng-click="clickedWP=!clickedWP" >I don't know, why would I need Wordpress?</i>
         <div>
@@ -153,15 +157,15 @@
             <label for="nowp">No, Thank You</label>
         </div>
 
-        <a class="Btn" href="#eighth">Continue</a>
+        <a class="Btn" href="#seventh">Continue</a>
     </section>
     <!-- FORM ENTRY #7 -->
-    <section id="eighth">
+    <section id="seventh">
         <h2>Putting your quote together now!</h2>
-        <a class="Btn" href="#nineth" ng-click="calculateQuote()">See Quote</a>
+        <a class="Btn" href="#eighth" ng-click="calculateQuote()">See Quote</a>
     </section>
     <!-- FORM ENTRY #8 -->
-    <section id="nineth">
+    <section id="eighth">
         <h2>Here's how much we think the site will cost: </h2>
         <h1>{{quoteRange}}</h1>
         <p>The rough estimate supports our mission of [[INSERT MESSAGE]],
@@ -169,31 +173,6 @@
         <input class="Btn" type="submit" value="Email Us" />
     </section>
 </form>
-
-<!-- SECTION THAT EXPLAINS THE DIFFERENCE -->
-<div class="animate-slide" ng-show="clickedDiff">
-    <div ng-show="clickedDiff">
-        <h2>{{differenceText}}</h2>
-        <button ng-click="clickedDiff=!clickedDiff" ng-class="clickedDiff ? '' : 'hide'" class="closeBtn">X</button>
-    </div>
-</div>
-
-<!-- SECTION THAT EXPLAINS WHY YOU WOULD CHOOSE WORDPRESS -->
-<div class="animate-slide" ng-show="clickedWP">
-    <div ng-show="clickedWP">
-        <h2>{{wordpressText}}</h2>
-        <button ng-click="clickedWP=!clickedWP" ng-class="clickedWP ? '' : 'hide'" class="closeBtn">X</button>
-    </div>
-</div>
-<!-- THANK YOU MESSAGE SECTION -->
-<div class="animate-slide" ng-show="formComplete" id="thankyou_message">
-    <div ng-show="formComplete">
-        <h2><em>Thanks</em> for contacting us {{client.name}}!
-            We will get back to you soon!</h2>
-        <button ng-click="formComplete=!formComplete" ng-class="formComplete ? '' : 'hide'" class="closeBtn">X</button>
-    </div>
-</div>
-
 
 <script data-cfasync="false" type="text/javascript"
         src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js">

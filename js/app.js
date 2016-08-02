@@ -4,22 +4,6 @@ angular.module('ERL', ['ngSanitize'] )
 
         $scope.pages = [];
 
-        var initPageNum = 1;
-        var typesOfPages = '';
-
-        /** Allows the user to add pages to the scope of the project */
-        $scope.addPage = function() {
-            if ($scope.pagename !== undefined && $scope.pagename !== "") {
-                $scope.pages.push({
-                    id: initPageNum,
-                    name: $scope.pagename
-                });
-                initPageNum++;
-                typesOfPages += $scope.pagename + '\n';
-                $scope.pagename = "";
-            }
-        };
-
         /** Allows the user to enlarge thumbnails on the screen */
         $scope.isEnlarged = false;
         $scope.viewThumbnail = function() {
@@ -30,77 +14,68 @@ angular.module('ERL', ['ngSanitize'] )
                 $scope.viewedImage = "";
             }
         };
+        // boolean switch for if a user clicked a tooltip for App vs. Site difference description
         $scope.clickedDiff = false;
         $scope.differenceText = "The difference between a Website and a web app is quite simple. " +
             "A web app is this, while a website is this, duh, easy";
+        // boolean switch for if a user clicked a tooltip for the why Wordpress explanation
         $scope.clickedWP = false;
         $scope.wordpressText = "How often do you need to edit your site? " +
             "Will you be editing your site at least once a week?" +
             "Does your site have a blog?";
 
-        // All the home page templates
-        $scope.homeTemplates = [
+        // The first set of template pages shown
+        $scope.templateSet1 = [
             "img/erl_page1.png",
             "img/erl_page2.png",
             "img/erl_page3.png",
             "img/erl_page4.png"
         ];
-        // All the about page templates
-        $scope.aboutTemplates = [
+        // The second set of template pages shown
+        $scope.templateSet2 = [
             "img/erl_page5.png",
             "img/erl_page6.png",
             "img/erl_page7.png",
             "img/erl_page8.png"
         ];
 
+        $scope.showTemplates = true;
+
+        // Change the String below to edit the values for what users may want to learn on your site
         $scope.learnBtns = [{
-            id: "1",
-            val: "Users should learn more about my company/organization"
+            id: "1", val: "Users should learn more about my company/organization"
         }, {
-            id: "2",
-            val: "I want users to know about events that we have"
+            id: "2", val: "I want users to know about events that we have"
         }, {
-            id: "3",
-            val: "Users should learn more about my company/organization"
+            id: "3", val: "Users should learn more about my company/organization"
         }, {
-            id: "4",
-            val: "I want users to know about events that we have"
+            id: "4", val: "I want users to know about events that we have"
         }, {
-            id: "5",
-            val: "Users should learn more about my company/organization"
+            id: "5", val: "Users should learn more about my company/organization"
         }, {
-            id: "6",
-            val: "Other"
+            id: "6", val: "Other"
         }
         ];
 
+        // Values must match the 9 in the ERL Clients Spreadsheet
         $scope.selectPages = [{
-            id: "1",
-            val: "Home"
+            id: "1", val: "Home"
         }, {
-            id: "2",
-            val: "About"
+            id: "2", val: "About"
         }, {
-            id: "3",
-            val: "Contact"
+            id: "3", val: "Contact"
         }, {
-            id: "4",
-            val: "Content"
+            id: "4", val: "Content"
         }, {
-            id: "5",
-            val: "PageName"
+            id: "5", val: "PageName1"
         }, {
-            id: "6",
-            val: "PageName"
+            id: "6", val: "PageName2"
         }, {
-            id: "7",
-            val: "PageName"
+            id: "7", val: "PageName3"
         }, {
-            id: "8",
-            val: "PageName"
+            id: "8", val: "PageName4"
         }, {
-            id: "9",
-            val: "Other"
+            id: "9", val: "Other"
         }];
 
 
@@ -127,63 +102,37 @@ angular.module('ERL', ['ngSanitize'] )
                 '$' + ($scope.highQuote + additionalCost).toString()
 
         }
-
+        // Sets the value for a button to true if it was checked
         $scope.setChecked = function() {
             for (var i = 1; i < 7; i++) {
                 if (document.getElementById('learn' + i).checked) {
                     document.getElementById('goal' + i).value = "true";
-                    console.log("checked" + i);
                 } else {
                     document.getElementById('goal' + i).value = "false";
                 }
             }
+            $scope.formComplete = true;
+            /*
             for (var m = 1; m < 10; m++) {
                 if (document.getElementById('selectPages' + m).checked) {
                     document.getElementById('pagina' + m).value = "true";
-                    console.log("checked" + m);
                 } else {
                     document.getElementById('pagina' + m).value = "false";
                 }
-            }
-            $scope.formComplete = true;
+            }*/
         }
 
-        $scope.sendEmail = function() {
-
-            var email = '\n';
-            var projectType = document.querySelector('input[name = "projectType"]:checked').value;
-            var learnBtns = document.querySelector('input[name = "learnBtns"]:checked').value;
-            var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
-            if (isWordpress == 'yeswp') {
-                isWordpress = 'Yes'
-            } else {
-                isWordpress = 'No'
+        $scope.selectedPages = [];
+        $scope.setPages = function() {
+            var selectedPagesCount = 0;
+            for (var m = 1; m < 10; m++) {
+                if (document.getElementById('selectPages' + m).checked) {
+                    selectedPagesCount++;
+                    $scope.selectedPages.push({
+                        name: document.getElementById('selectPages' + m).value.toString(),
+                        idx: selectedPagesCount
+                });
+                }
             }
-            var homeTemplates = document.querySelector('input[name = "homePages"]:checked').value;
-            var aboutTemplates = document.querySelector('input[name = "aboutPages"]:checked').value;
-
-            email += 'Hi Resilient Lab, ' + '\n' + '\n';
-            email += 'My name is ' + $scope.client.name + ' and I work for ' + $scope.client.company + '\n';
-            email += 'I am current looking to build a ' + projectType + " with your team!" + '\n';
-            email += "Here's what I intend for those who use my " + projectType + ' to do:' + '\n';
-            email += learnBtns + '\n';
-
-            if ($scope.moreInfo !== undefined && $scope.moreInfo !== '') {
-                email += " and " + $scope.moreInfo + '\n';
-            }
-
-            email += 'Here are the pages: ' + '\n' + typesOfPages + '\n';
-            email += 'Here are the templates I hope to use: ' + '\n' + homeTemplates + '\n' + aboutTemplates + '\n';
-            email += "Is this a wordpress project? " + isWordpress + '\n';
-
-            email += "Here was the estimated cost of the project: " + $scope.quoteRange
-            email += 'Please contact me back at ' + $scope.client.email + '\n';
-
-            console.log(email);
-            document.getElementById("formToSend").name = "Potential ERL Client: \n";
-            document.getElementById("formToSend").value = '';
-            document.getElementById("formToSend").value += email;
         }
-
-
     });
