@@ -21,7 +21,7 @@
 <!--<form name="form" class="css-form" novalidate action="MAILTO:muigai@resilientcoders.org?subject=Express Project Quote" method="post"
       enctype="text/plain">-->
 
-    <form name="form" class="css-form" novalidate id="gform" method="POST" class="pure-form pure-form-stacked"
+    <form name="form" class="css-form" novalidate ng-submit='setChecked()' id="gform" method="POST" class="pure-form pure-form-stacked"
           action="https://script.google.com/macros/s/AKfycbyAQkJ4lG2Ub7MQQjeJH4SqAqeryI7m-rsV0ObGKGrMcdDhB8wl/exec">
     <!-- FORM ENTRY #1 -->
     <section id="first">
@@ -57,11 +57,12 @@
             <li ng-repeat="btn in learnBtns" >
                 <input id="learn{{btn.id}}" type="checkbox" class="hide" value="{{btn.val}}" name="learn{{btn.id}}"/>
                 <label for="learn{{btn.id}}">{{btn.val}}</label>
+                <input id="goal{{btn.id}}" type="hidden" value="" name="goal{{btn.id}}">
             </li>
         </div>
 
         <p>Anything else we should know?</p>
-        <textarea id="moreinfo" ng-model="moreInfo"></textarea>
+        <textarea id="moreinfo" ng-model="moreInfo" name="moreInfo"></textarea>
         <a class="Btn" href="#fourth">Continue</a>
     </section>
     <!-- FORM ENTRY #4 -->
@@ -81,9 +82,10 @@
             <input type="text" ng-model="pagename"/>
         </div>-->
         <div class="flexbox">
-            <li ng-repeat="page in erlpages" >
-                <input id="erlpages{{page.id}}" type="checkbox" class="hide" value="{{page.val}}" name="erlpages"/>
-                <label for="erlpages{{page.id}}">{{page.val}}</label>
+            <li ng-repeat="page in selectPages" >
+                <input id="selectPages{{page.id}}" type="checkbox" class="hide" value="{{page.val}}" name="selectPages"/>
+                <label for="selectPages{{page.id}}">{{page.val}}</label>
+                <input id="pagina{{page.id}}" type="hidden" value="" name="pagina{{page.id}}">
             </li>
         </div>
         <a class="Btn" href="#fifth">Continue</a>
@@ -183,12 +185,14 @@
         <button ng-click="clickedWP=!clickedWP" ng-class="clickedWP ? '' : 'hide'" class="closeBtn">X</button>
     </div>
 </div>
-<!-- SECTION THAT USERS CAN UPLOAD DESIGNS TO -->
-
-<section style="display:none;" id="thankyou_message">
-    <h2><em>Thanks</em> for contacting us!
-        We will get back to you soon!</h2>
-</section>
+<!-- THANK YOU MESSAGE SECTION -->
+<div class="animate-slide" ng-show="formComplete" id="thankyou_message">
+    <div ng-show="formComplete">
+        <h2><em>Thanks</em> for contacting us {{client.name}}!
+            We will get back to you soon!</h2>
+        <button ng-click="formComplete=!formComplete" ng-class="formComplete ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
 
 
 <script data-cfasync="false" type="text/javascript"

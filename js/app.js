@@ -74,7 +74,7 @@ angular.module('ERL', ['ngSanitize'] )
         }
         ];
 
-        $scope.erlpages = [{
+        $scope.selectPages = [{
             id: "1",
             val: "Home"
         }, {
@@ -128,6 +128,26 @@ angular.module('ERL', ['ngSanitize'] )
 
         }
 
+        $scope.setChecked = function() {
+            for (var i = 1; i < 7; i++) {
+                if (document.getElementById('learn' + i).checked) {
+                    document.getElementById('goal' + i).value = "true";
+                    console.log("checked" + i);
+                } else {
+                    document.getElementById('goal' + i).value = "false";
+                }
+            }
+            for (var m = 1; m < 10; m++) {
+                if (document.getElementById('selectPages' + m).checked) {
+                    document.getElementById('pagina' + m).value = "true";
+                    console.log("checked" + m);
+                } else {
+                    document.getElementById('pagina' + m).value = "false";
+                }
+            }
+            $scope.formComplete = true;
+        }
+
         $scope.sendEmail = function() {
 
             var email = '\n';
@@ -163,7 +183,7 @@ angular.module('ERL', ['ngSanitize'] )
             document.getElementById("formToSend").name = "Potential ERL Client: \n";
             document.getElementById("formToSend").value = '';
             document.getElementById("formToSend").value += email;
-        };
+        }
 
 
     });
