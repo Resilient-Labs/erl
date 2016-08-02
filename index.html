@@ -55,7 +55,7 @@
         <p>What are users supposed to learn from the site?</p>
         <div>
             <li ng-repeat="btn in learnBtns" >
-                <input id="learn{{btn.id}}" type="checkbox" class="hide" value="{{btn.val}}" name="learnBtns"/>
+                <input id="learn{{btn.id}}" type="checkbox" class="hide" value="{{btn.val}}" name="learn{{btn.id}}"/>
                 <label for="learn{{btn.id}}">{{btn.val}}</label>
             </li>
         </div>
@@ -156,7 +156,6 @@
     <!-- FORM ENTRY #7 -->
     <section id="eighth">
         <h2>Putting your quote together now!</h2>
-        <!--<input id="formToSend" type="hidden">-->
         <a class="Btn" href="#nineth" ng-click="calculateQuote()">See Quote</a>
     </section>
     <!-- FORM ENTRY #8 -->

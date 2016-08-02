@@ -40,15 +40,17 @@ angular.module('ERL', ['ngSanitize'] )
 
         // All the home page templates
         $scope.homeTemplates = [
-            "img-03.png",
-            "img-04.png",
-            "img-05.png"
+            "img/erl_page1.png",
+            "img/erl_page2.png",
+            "img/erl_page3.png",
+            "img/erl_page4.png"
         ];
         // All the about page templates
         $scope.aboutTemplates = [
-            "img-03.png",
-            "img-04.png",
-            "img-05.png"
+            "img/erl_page5.png",
+            "img/erl_page6.png",
+            "img/erl_page7.png",
+            "img/erl_page8.png"
         ];
 
         $scope.learnBtns = [{
