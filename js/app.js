@@ -24,6 +24,9 @@ angular.module('ERL', ['ngSanitize'] )
             "Will you be editing your site at least once a week?" +
             "Does your site have a blog?";
 
+        $scope.pageNotShown = false;
+        $scope.start = false;
+
         // The first set of template pages shown
         $scope.templateSet1 = [
             "img/erl_page1.png",
@@ -41,22 +44,6 @@ angular.module('ERL', ['ngSanitize'] )
 
         $scope.showTemplates = true;
 
-        // Change the String below to edit the values for what users may want to learn on your site
-        $scope.learnBtns = [{
-            id: "1", val: "Users should learn more about my company/organization"
-        }, {
-            id: "2", val: "I want users to know about events that we have"
-        }, {
-            id: "3", val: "Users should learn more about my company/organization"
-        }, {
-            id: "4", val: "I want users to know about events that we have"
-        }, {
-            id: "5", val: "Users should learn more about my company/organization"
-        }, {
-            id: "6", val: "Other"
-        }
-        ];
-
         // Values must match the 9 in the ERL Clients Spreadsheet
         $scope.selectPages = [{
             id: "1", val: "Home"
@@ -65,17 +52,15 @@ angular.module('ERL', ['ngSanitize'] )
         }, {
             id: "3", val: "Contact"
         }, {
-            id: "4", val: "Content"
+            id: "4", val: "Blog"
         }, {
-            id: "5", val: "PageName1"
+            id: "5", val: "Wild Card 1"
         }, {
-            id: "6", val: "PageName2"
+            id: "6", val: "Wild Card 2"
         }, {
-            id: "7", val: "PageName3"
+            id: "7", val: "Wild Card 3"
         }, {
-            id: "8", val: "PageName4"
-        }, {
-            id: "9", val: "Other"
+            id: "8", val: "Wild Card 4"
         }];
 
 
@@ -85,19 +70,19 @@ angular.module('ERL', ['ngSanitize'] )
         $scope.calculateQuote = function() {
             var additionalCost = 0;
             // multiples $120 per page (the array length of the amount of pages the user input)
-            var costPerPage = $scope.pages.length * 120;
+            var costPerPage = $scope.selectedPages.length * 120;
             additionalCost += costPerPage; // 1.5 hours per page
 
             var isWordpress = document.querySelector('input[name = "isWordpress"]:checked').value;
             if (isWordpress == 'yeswp') {
                 additionalCost += 960; // 12 additional hours for WordPress, adds 960
             }
-            var projectType = document.querySelector('input[name = "projectType"]:checked').value;
+         /*   var projectType = document.querySelector('input[name = "projectType"]:checked').value;
             if (projectType == 'webapp') {
                 additionalCost += 2240; // 28 additional hours at $80 / hr for Web App
             } else {
                 additionalCost += 640; // 8 hours at $80 / hr for web site
-            }
+            }*/
             $scope.quoteRange = '$' + ($scope.lowQuote + additionalCost).toString() + " to " +
                 '$' + ($scope.highQuote + additionalCost).toString()
 
@@ -122,8 +107,8 @@ angular.module('ERL', ['ngSanitize'] )
             }*/
         }
 
-        $scope.selectedPages = [];
         $scope.setPages = function() {
+            $scope.selectedPages = [];
             var selectedPagesCount = 0;
             for (var m = 1; m < 10; m++) {
                 if (document.getElementById('selectPages' + m).checked) {
