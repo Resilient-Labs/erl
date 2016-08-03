@@ -7,7 +7,7 @@
 
 #logo {
     background-color: transparent;
-    z-index: 100;
+    z-index: 1000;
     color: white;
     opacity: 100;
     position: fixed;
@@ -157,6 +157,9 @@ textarea:focus, input[type="text"]:focus, input[type="email"]:focus {
     border-radius: 4px;
     outline: none;
     border: 1px solid;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
 }
 
 .Btn:hover {
@@ -300,7 +303,7 @@ section div {
     transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 }
 
-.animate-slide div{
+.animate-slide div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -395,9 +398,9 @@ section div {
         height: 60px;
     }
     h2 {
-        font-size: 32px;
+        font-size: 28px;
     }
-    h2, h4 {
+    h2, h4, p {
         margin: 20px;
         text-align: center;
     }
@@ -414,8 +417,77 @@ section div {
         width: 125px;
     }
 
+    .Btn {
+        width: 140px;
+    }
+
     .selectBtn {
         min-height: 16px;
         height: 16px;
+    }
+
+    .animate-slide div {
+        width: 75%;
+    }
+
+    div div h2 {
+        font-size: 20px;
+        text-align: left;
+    }
+
+    .imageContainer div {
+        display: flex;
+        height: 80%;
+        justify-content: center;
+        -webkit-justify-content: center;
+    }
+
+    .imageContainer div img {
+        max-width: 90%;
+        align-self: flex-end;
+        min-height: 500px;
+    }
+}
+
+@media (min-width: 721px) and (max-width: 960px) {
+    #logo {
+        height: 60px;
+        width: 60px;
+    }
+    h2, h4, p {
+        margin: 20px;
+        max-width: 90%;
+    }
+
+    div div h2 {
+        font-size: 28px;
+    }
+
+    section div {
+        width: 85%;
+    }
+
+    .animate-slide div {
+        width: 75%;
+    }
+
+    .template {
+        width: 160px;
+    }
+
+    .closeBtn {
+        margin: 10px 0;
+    }
+
+    .imageContainer div {
+        display: flex;
+        margin: 40px auto;
+        align-items: flex-end;
+    }
+
+    .imageContainer div img {
+        align-self: flex-end;
+        max-height: 640px;
+        margin: 40px 0 0 0;
     }
 }
