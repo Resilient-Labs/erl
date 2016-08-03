@@ -24,7 +24,6 @@ body {
     flex-flow: column;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: hidden;
     font-family: sans-serif;
 }
 
@@ -39,29 +38,35 @@ section {
 }
 
 h1 {
-    color: #50c878;
+    color: #50c878
 }
-
+a {
+    color: #fff;
+    text-decoration: none;
+}
 h2 {
     color: #fff;
     font-size: 32px;
     font-family: helvetica, sans-serif;
 }
 
-p {
+h4 {
     color: #fff;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+    margin: 10px 0;
 }
 
-i {
+p {
     font-size: 16px;
     font-family: Roboto Slab, serif;
     text-decoration: underline;
     color: #fff;
+    margin: 0 10px;
 }
 
-i:hover {
+p:hover {
     cursor: pointer;
     color: #ed1b24;
 }
@@ -113,11 +118,12 @@ input[type="button"], section label {
     display: flex;
     padding: 10px;
     margin: 20px auto;
-    background-color: #666;
-    font-weight: initial;
-    color: white;
-    height: 60px;
-    width: 150px;
+    background-color: #fff;
+    border-radius: 4px;
+    color: #333;
+    font-weight: bold;
+    height: 30px;
+    width: 180px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -134,22 +140,21 @@ textarea:focus, input[type="text"]:focus, input[type="email"]:focus {
     display: flex;
     padding: 10px;
     margin: 20px auto;
-    background-color: #666;
     font-weight: initial;
     color: #fff;
     min-height: 30px;
-    width: 150px;
+    width: 180px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 4px;
     outline: none;
+    border: 1px solid;
 }
 
 .Btn:hover {
     color: #fff;
-    background-color: #ed1b24;
 }
 
 textarea {
@@ -197,7 +202,7 @@ textarea {
 
 .template {
     width: 200px;
-    margin: 0 10px;
+    margin: 5px 10px;
 }
 
 .template div {
@@ -257,7 +262,7 @@ textarea {
 
 .imageContainer div img {
     width: auto;
-    max-height: 840px;
+    max-height: 800px;
     min-height: 70vh;
 }
 
@@ -280,13 +285,17 @@ textarea {
     border: #ed1b24;
 }
 
-#second div , #third div, .selectedPages div, #fourth div, #sixth div , #seventh div{
-    max-width: 600px;
+section div {
+    max-width: 640px;
     display: flex;
     width: 50%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-flow: row wrap;
+}
+
+.selectedPages div {
+    max-width: 900px;
 }
 
 #second div p {
@@ -386,3 +395,25 @@ svg {
     display:block!important;
 }
 
+
+.dots {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.dots a {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    margin: 5px;
+}
+
+.dots a.filled {
+    background-color: white;
+}
+
+.dots a:hover {
+    cursor: pointer;
+}

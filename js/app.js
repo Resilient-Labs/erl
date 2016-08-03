@@ -14,18 +14,8 @@ angular.module('ERL', ['ngSanitize'] )
                 $scope.viewedImage = "";
             }
         };
-        // boolean switch for if a user clicked a tooltip for App vs. Site difference description
-        $scope.clickedDiff = false;
-        $scope.differenceText = "The difference between a Website and a web app is quite simple. " +
-            "A web app is this, while a website is this, duh, easy";
-        // boolean switch for if a user clicked a tooltip for the why Wordpress explanation
-        $scope.clickedWP = false;
-        $scope.wordpressText = "How often do you need to edit your site? " +
-            "Will you be editing your site at least once a week?" +
-            "Does your site have a blog?";
 
-        $scope.pageNotShown = false;
-        $scope.start = false;
+        $scope.pageNotShown, $scope.notEnoughPages, $scope.useWP, $scope.notWP, $scope.start, $scope.howItWorks, $scope.isCustomizable = false;
 
         // The first set of template pages shown
         $scope.templateSet1 = [
@@ -110,7 +100,7 @@ angular.module('ERL', ['ngSanitize'] )
         $scope.setPages = function() {
             $scope.selectedPages = [];
             var selectedPagesCount = 0;
-            for (var m = 1; m < 10; m++) {
+            for (var m = 1; m < 9; m++) {
                 if (document.getElementById('selectPages' + m).checked) {
                     selectedPagesCount++;
                     $scope.selectedPages.push({
