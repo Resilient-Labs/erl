@@ -88,14 +88,6 @@ angular.module('ERL', ['ngSanitize'] )
                 }
             }
             $scope.formComplete = true;
-            /*
-            for (var m = 1; m < 10; m++) {
-                if (document.getElementById('selectPages' + m).checked) {
-                    document.getElementById('pagina' + m).value = "true";
-                } else {
-                    document.getElementById('pagina' + m).value = "false";
-                }
-            }*/
         }
 
         $scope.setPages = function() {
@@ -108,6 +100,8 @@ angular.module('ERL', ['ngSanitize'] )
                         name: document.getElementById('selectPages' + m).value.toString(),
                         idx: selectedPagesCount
                 });
+                } else {
+                    document.getElementById().checked
                 }
             }
         }
