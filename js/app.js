@@ -100,8 +100,6 @@ angular.module('ERL', ['ngSanitize'] )
                         name: document.getElementById('selectPages' + m).value.toString(),
                         idx: selectedPagesCount
                 });
-                } else {
-                    document.getElementById().checked
                 }
             }
         }
