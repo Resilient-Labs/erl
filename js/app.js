@@ -15,7 +15,8 @@ angular.module('ERL', ['ngSanitize'] )
             }
         };
 
-        $scope.pageNotShown, $scope.notEnoughPages, $scope.useWP, $scope.notWP, $scope.start, $scope.howItWorks, $scope.isCustomizable = false;
+        $scope.pageNotShown, $scope.notEnoughPages, $scope.useWP, $scope.notWP, $scope.start,
+            $scope.formComplete, $scope.howItWorks, $scope.isCustomizable = false;
 
         // The first set of template pages shown
         $scope.templateSet1 = [
