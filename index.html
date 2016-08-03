@@ -48,8 +48,8 @@
 <div class="animate-slide" ng-show="howItWorks">
     <div ng-show="howItWorks">
         <h2>Student developers are paired up with a more advanced developer, who acts as an instructor, mentor, and quality assurance inspector.
-        Our rate takes into consideration not just the student's time spent coding, but also her time spent learning, and the instructor's
-        time spent teaching and vetting the work. This gives us the best of both worlds: The rate we pass on to you is competitive,
+            Our rate takes into consideration not just the student's time spent coding, but also her time spent learning, and the instructor's
+            time spent teaching and vetting the work. This gives us the best of both worlds: The rate we pass on to you is competitive,
             and the work is guided and vetted by a more seasoned pro.</h2>
         <button ng-click="howItWorks=!howItWorks" ng-class="howItWorks ? '' : 'hide'" class="closeBtn">X</button>
     </div>
@@ -59,8 +59,8 @@
 <div class="animate-slide" ng-show="isCustomizable">
     <div ng-show="isCustomizable">
         <h2>Everything can be customized. What you're buying here is a top quality cheese pizza. Our toppings are
-        endless, they are delicious, and they are totally up to you to curate. We're happy to have a conversation about
-        what your particular pizza qould cost to create.</h2>
+            endless, they are delicious, and they are totally up to you to curate. We're happy to have a conversation about
+            what your particular pizza could cost to create.</h2>
         <button ng-click="isCustomizable=!isCustomizable" ng-class="isCustomizable ? '' : 'hide'" class="closeBtn">X</button>
     </div>
 </div>
@@ -103,7 +103,7 @@
         <input id="name" ng-model="client.name" type="text" name="name" placeholder="Name" required>
         <input id="email" ng-model="client.email" type="email" name="email" placeholder="Email" required>
         <input id="company" ng-model="client.company" type="text" name="company" placeholder="Company name">
-        <a class="Btn" href="#second">Continue</a>
+        <a class="Btn hvr-sweep-to-right" href="#second">Continue</a>
     </section>
 
     <!-- FORM ENTRY #2 -->
@@ -112,7 +112,7 @@
         <h4>What's important for us to know before we even get started?</h4>
 
         <textarea id="moreinfo" ng-model="moreInfo" name="moreInfo" placeholder="Include anything you can think about"></textarea>
-        <a class="Btn" href="#third">Continue</a>
+        <a class="Btn hvr-sweep-to-right" href="#third">Continue</a>
     </section>
     <!-- FORM ENTRY #3 -->
     <section id="third">
@@ -126,7 +126,7 @@
         </div>
         <p ng-click="pageNotShown=!pageNotShown" >I don't see the page I want on here</p>
         <p ng-click="notEnoughPages=!notEnoughPages" >What if our site has more than 8 pages?</p>
-        <a class="Btn" href="#page1" ng-click="setPages()">Continue</a>
+        <a class="Btn hvr-sweep-to-right" href="#page1" ng-click="setPages()">Continue</a>
     </section>
     <!-- FORM ENTRY TEMPLATES -->
     <section class="selectedPages" id="page{{pg.idx}}" ng-repeat="pg in selectedPages">
@@ -159,14 +159,13 @@
             <a ng-click="showTemplates=!showTemplates" ng-class="showTemplates ? '' : 'filled'" ></a>
         </li>
 
-        <a class="Btn" href="#page{{pg.idx+1}}" ng-if="!$last">Select Next</a>
-        <a class="Btn" href="#fourth" ng-if="$last">Continue</a>
+        <a class="Btn hvr-sweep-to-right" href="#page{{pg.idx+1}}" ng-if="!$last">Select Next</a>
+        <a class="Btn hvr-sweep-to-right" href="#fourth" ng-if="$last">Continue</a>
     </section>
 
     <!-- FORM ENTRY #6 -->
     <section id="fourth">
         <h2>Last question, do you need Wordpress?</h2>
-        <div><p ng-click="useWP=!useWP">Let's use Wordpress if ... </p>  <p ng-click="notWP=!notWP">Let's not use Wordpress if ...</p></div>
         <div>
             <input id="yeswp" type="radio" class="hide" value="yeswp" name="isWordpress"/>
             <label for="yeswp">Yes, Wordpress</label>
@@ -175,7 +174,12 @@
             <input id="notsure" type="radio" class="hide" value="notsure" name="isWordpress"/>
             <label for="notsure">Not Sure</label>
         </div>
-        <a class="Btn" href="#fifth" ng-click="calculateQuote()">See Quote</a>
+
+        <div>
+            <p ng-click="useWP=!useWP">Let's use Wordpress if ... </p>
+            <p ng-click="notWP=!notWP">Let's not use Wordpress if ...</p>
+        </div>
+        <a class="Btn hvr-sweep-to-right" href="#fifth" ng-click="calculateQuote()">See Quote</a>
     </section>
 
 
@@ -183,11 +187,14 @@
     <section id="fifth">
         <h2>Here's how much we think the site will cost: </h2>
         <h1>{{quoteRange}}</h1>
-        <h4>Thank you for helping us launch a young coder's career. Meet some of the Lab's <a target="_blank" href="http://www.resilientcoders.org">alumni!</a></h4>
-        <input class="Btn" type="submit" value="Email Us" />
+        <h4>Thank you for helping us launch a young coder's career. </h4>
+        <div>
+            <input class="Btn hvr-sweep-to-right" type="submit" value="Email Us" />
+            <a class="Btn hvr-sweep-to-right" href="#first" >Revisit Details</a>
+        </div>
         <p ng-click="howItWorks=!howItWorks">How does the model work? And how do I know the work will be good? </p>
         <p ng-click="isCustomizable=!isCustomizable">How much can be customized? And what's with the range? </p>
-        <a class="Btn" href="#first" >Revisit Details</a>
+
     </section>
 </form>
 
