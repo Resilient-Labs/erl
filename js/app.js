@@ -76,7 +76,6 @@ angular.module('ERL', ['ngSanitize'] )
 
         $scope.isValidForm = function () {
             if ( document.getElementById('quote').value === "" || document.getElementById('quote').value === undefined) {
-                console.log("form is incomplete");
                 return false;
             } else {
                 return true;
@@ -85,7 +84,6 @@ angular.module('ERL', ['ngSanitize'] )
         // Sets the value for a button to true if it was checked
         $scope.formCompleted = function () {
             if ( $scope.isValidForm() ) {
-                console.log(document.getElementById('quote').value);
                 $scope.formComplete = true;
             } else {
                 $scope.invalidEmail = true;
