@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body ng-controller="AppCtrl as ctrl">
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.8/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
@@ -65,6 +66,15 @@
     </div>
 </div>
 
+<!-- ERROR MESSAGE -->
+<div class="animate-slide" id="email-invalid" ng-show="invalidEmail"><!--id="thankyou_message"-->
+    <div ng-show="invalidEmail">
+        <h2>Something does not look quite right. Be sure to fill in all the information
+            <a href="#first" ng-click="invalidEmail=!invalidEmail">here.</a></h2>
+        <button ng-click="invalidEmail=!invalidEmail" ng-class="invalidEmail ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
+</div>
+
 <!-- THANK YOU MESSAGE SECTION -->
 <div class="animate-slide" ng-show="formComplete"><!--id="thankyou_message"-->
     <div ng-show="formComplete">
@@ -83,8 +93,6 @@
     </div>
 </div>
 
-
-
 <div ng-class="isEnlarged ? 'imageContainer' : 'hide'">
     <div ng-bind-html="viewedImage">
     </div>
@@ -93,7 +101,7 @@
 
 <a href="http://www.resilientcoders.org" target="_blank"><img id="logo" src="logo.png" /></a>
 <!-- Express Resilient Lab Form version 1.10  developed by Resilient Lab, tested by East Coast Product & Fresh Tilled Soil -->
-<form name="form" class="css-form" novalidate ng-submit='setChecked()' id="gform" method="POST" class="pure-form pure-form-stacked"
+<form name="form" class="css-form" novalidate ng-submit='formCompleted()' id="gform" method="POST" class="pure-form pure-form-stacked"
       action="https://script.google.com/macros/s/AKfycbyAQkJ4lG2Ub7MQQjeJH4SqAqeryI7m-rsV0ObGKGrMcdDhB8wl/exec">
     <!-- FORM ENTRY #1 -->
     <section id="first">
@@ -189,7 +197,8 @@
         <h1>{{quoteRange}}</h1>
         <h4>Thank you for helping us launch a young coder's career. </h4>
         <div>
-            <button style="background-color: transparent"class="Btn hvr-sweep-to-right" type="submit" ng-click="formComplete=!formComplete">Email Us</button>
+            <input type="hidden" value="" name="quote" id="quote" />
+            <button style="background-color: transparent"class="Btn hvr-sweep-to-right" type="submit" ng-click="formCompleted()">Email Us</button>
             <a class="Btn hvr-sweep-to-right" href="#first" >Revisit Details</a>
         </div>
         <p ng-click="howItWorks=!howItWorks">How does the model work? And how do I know the work will be good? </p>
@@ -198,10 +207,7 @@
     </section>
 </form>
 
-<script data-cfasync="false" type="text/javascript"
-        src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js">
-
-</script>
+<script data-cfasync="false" type="text/javascript" src="js/form-submission-handler.js"></script>
 
 </body>
 </html>

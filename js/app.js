@@ -6,7 +6,7 @@ angular.module('ERL', ['ngSanitize'] )
 
         /** Allows the user to enlarge thumbnails on the screen */
         $scope.isEnlarged = false;
-        $scope.viewThumbnail = function() {
+        $scope.viewThumbnail = function () {
             $scope.isEnlarged = !$scope.isEnlarged;
             if ($scope.isEnlarged) {
                 $scope.viewedImage = "<img src='" + this.temps + "'>"
@@ -16,7 +16,7 @@ angular.module('ERL', ['ngSanitize'] )
         };
 
         $scope.pageNotShown, $scope.notEnoughPages, $scope.useWP, $scope.notWP, $scope.start,
-            $scope.formComplete, $scope.howItWorks, $scope.isCustomizable = false;
+            $scope.formComplete, $scope.howItWorks, $scope.isCustomizable, $scope.invalidEmail = false;
 
         // The first set of template pages shown
         $scope.templateSet1 = [
@@ -58,7 +58,7 @@ angular.module('ERL', ['ngSanitize'] )
         $scope.lowQuote = 500;
         $scope.highQuote = 1500;
 
-        $scope.calculateQuote = function() {
+        $scope.calculateQuote = function () {
             var additionalCost = 0;
             // multiples $120 per page (the array length of the amount of pages the user input)
             var costPerPage = $scope.selectedPages.length * 120;
@@ -68,26 +68,28 @@ angular.module('ERL', ['ngSanitize'] )
             if (isWordpress == 'yeswp') {
                 additionalCost += 960; // 12 additional hours for WordPress, adds 960
             }
-         /*   var projectType = document.querySelector('input[name = "projectType"]:checked').value;
-            if (projectType == 'webapp') {
-                additionalCost += 2240; // 28 additional hours at $80 / hr for Web App
-            } else {
-                additionalCost += 640; // 8 hours at $80 / hr for web site
-            }*/
             $scope.quoteRange = '$' + ($scope.lowQuote + additionalCost).toString() + " to " +
-                '$' + ($scope.highQuote + additionalCost).toString()
+                '$' + ($scope.highQuote + additionalCost).toString();
+            document.getElementById('quote').value = $scope.quoteRange;
 
         }
-        // Sets the value for a button to true if it was checked
-        $scope.setChecked = function() {
-            for (var i = 1; i < 7; i++) {
-                if (document.getElementById('learn' + i).checked) {
-                    document.getElementById('goal' + i).value = "true";
-                } else {
-                    document.getElementById('goal' + i).value = "false";
-                }
+
+        $scope.isValidForm = function () {
+            if ( document.getElementById('quote').value === "" || document.getElementById('quote').value === undefined) {
+                console.log("form is incomplete");
+                return false;
+            } else {
+                return true;
             }
-            $scope.formComplete = true;
+        }
+        // Sets the value for a button to true if it was checked
+        $scope.formCompleted = function () {
+            if ( $scope.isValidForm() ) {
+                console.log(document.getElementById('quote').value);
+                $scope.formComplete = true;
+            } else {
+                $scope.invalidEmail = true;
+            }
         }
 
         $scope.setPages = function() {
@@ -99,7 +101,7 @@ angular.module('ERL', ['ngSanitize'] )
                     $scope.selectedPages.push({
                         name: document.getElementById('selectPages' + m).value.toString(),
                         idx: selectedPagesCount
-                });
+                    });
                 }
             }
         }
