@@ -1,7 +1,6 @@
 angular.module('ERL', ['ngSanitize'] )
     .controller('AppCtrl', function ($scope) {
         $scope.client = {};
-
         $scope.pages = [];
 
         /** Allows the user to enlarge thumbnails on the screen */
@@ -99,6 +98,8 @@ angular.module('ERL', ['ngSanitize'] )
                     $scope.selectedPages.push({
                         name: document.getElementById('selectPages' + m).value.toString(),
                         idx: selectedPagesCount
+                        /*brillient man: https://scontent-lga3-1.xx.fbcdn.net/t31.0-8/333251_706962506398_1157689944_o.jpg*/
+
                     });
                 }
             }
