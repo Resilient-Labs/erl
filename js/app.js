@@ -4,9 +4,11 @@ angular.module('ERL', ['ngSanitize'] )
         $scope.pages = [];
 
         /** Allows the user to enlarge thumbnails on the screen */
-        $scope.isEnlarged = false;
+
         $scope.viewThumbnail = function () {
             $scope.isEnlarged = !$scope.isEnlarged;
+
+            console.log($scope.isEnlarged);
             if ($scope.isEnlarged) {
                 $scope.viewedImage = "<img src='" + this.temps + "'>"
             } else {
@@ -70,7 +72,7 @@ angular.module('ERL', ['ngSanitize'] )
             $scope.quoteRange = '$' + ($scope.lowQuote + additionalCost).toString() + " to " +
                 '$' + ($scope.highQuote + additionalCost).toString();
             document.getElementById('quote').value = $scope.quoteRange;
-
+            $scope.quoted = true;
         }
 
         $scope.isValidForm = function () {
@@ -89,6 +91,7 @@ angular.module('ERL', ['ngSanitize'] )
             }
         }
 
+        /** Dynamically creates the screens for choosing templates based on the number of pages the user selected */
         $scope.setPages = function() {
             $scope.selectedPages = [];
             var selectedPagesCount = 0;
