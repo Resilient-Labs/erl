@@ -21,7 +21,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-flow: column;
+    /*
+    DOES NOT WORK ON FIREFOX:
+    flex-flow: column;*/
     margin: 0;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -326,6 +328,19 @@ section div {
     height: 75%;
     min-width: 360px;
     margin: 0 auto;
+}
+
+.animate-slide.shadowbox {
+    background: rgba(0,0,0,.6)!important;
+    height: 100%;
+    width: auto;
+}
+
+.animate-slide div img {
+    width: 50%;
+    height: auto;
+    margin-bottom: 20px;
+    min-width: 360px;
 }
 
 .animate-slide.ng-hide {

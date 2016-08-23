@@ -15,9 +15,17 @@
 <script type="text/javascript" src="js/app.js"></script>
 
 <!-- SECTION THAT CONTAINS THE CODE FOR TEMPLATE IMAGE ENLARGING-->
-<div ng-class="isEnlarged ? 'imageContainer' : 'hide'" ng-init="isEnlarged = false">
+<!--<div ng-class="isEnlarged ? 'imageContainer' : 'hide'" ng-init="isEnlarged = false">
     <div ng-bind-html="viewedImage"></div>
     <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
+</div>-->
+
+<div class="animate-slide shadowbox" ng-show="isEnlarged">
+    <!--<div ng-bind-html="viewedImage"></div>-->
+    <div>
+    <img ng-src="{{viewedImg}}" />
+    <button ng-click="viewThumbnail()" ng-class="isEnlarged ? '' : 'hide'" class="closeBtn">X</button>
+    </div>
 </div>
 
 <!-- SECTION THAT EXPLAINS WHY YOU WOULD CHOOSE WORDPRESS -->

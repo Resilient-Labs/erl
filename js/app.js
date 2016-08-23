@@ -10,7 +10,11 @@ angular.module('ERL', ['ngSanitize'] )
 
             console.log($scope.isEnlarged);
             if ($scope.isEnlarged) {
-                $scope.viewedImage = "<img src='" + this.temps + "'>"
+                $scope.viewedImage = "<img src='" + this.temps + "'>" ;
+                $scope.viewedImg = this.temps;
+                /*+ '\n' +
+                "<button ng-click=' " + 'viewThumbnail()' +
+                'ng-class=' + 'isEnlarged ? ' + '' : 'hide' ' class='closeBtn'>X</button>"*/
             } else {
                 $scope.viewedImage = "";
             }
